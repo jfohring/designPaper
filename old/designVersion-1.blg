@@ -1,0 +1,16 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: designVersion-1.aux
+The style file: plain.bst
+I couldn't open database file ../../../../Bibliographys/ProposalBib.bib
+---line 53 of file designVersion-1.aux
+ : \bibdata{../../../../Bibliographys/ProposalBib
+ :                                               }
+I'm skipping whatever remains of this command
+I found no database files---while reading file designVersion-1.aux
+Warning--I didn't find a database entry for "habera"
+Warning--I didn't find a database entry for "Atkinson1992"
+Warning--I didn't find a database entry for "Haber2008"
+Warning--I didn't find a database entry for "Chen2006"
+Warning--I didn't find a database entry for "Fohring2014"
+Warning--I didn't find a database entry for "Maybeck1979"
+Warning--I didn't find a database entry for "Hutchinson1989"
+(There were 2 error messages)

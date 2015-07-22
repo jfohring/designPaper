@@ -1,0 +1,633 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{fullpage}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{latexsym}
+%\usepackage{pstricks}
+\usepackage{tikz,pgflibraryplotmarks}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+\usepackage[nottoc,numbib]{tocbibind} 
+\usepackage{todonotes}
+
+
+\newcommand {\R}    {{\rm I\!R}}
+\newcommand {\bu}   { {\bf u} }   	% discrete flow field
+\newcommand {\buref}   { {\bf u}_{\text{ref}} } % discrete reference flow field
+\newcommand {\bugt}   { {\bf u}_{\text{gt}} } 	% discrete ground truth flow field
+\newcommand {\bfx}  { {\bf x} }
+\newcommand {\bfc}  { {\bf c} }
+\newcommand {\bfd}   { {\bf d} }
+\newcommand {\bfv}   { {\bf v} }
+\newcommand {\bfe}   { {\bf e} }
+\newcommand {\bfw}   { {\bf w} }
+\newcommand {\bfs}   { {\bf s} }
+\newcommand {\bsgt}   { {\bf s_\text{gt}} }
+\newcommand {\bfu}   { {\bf u} }
+\newcommand {\bfq}   { {\bf q} }
+\newcommand {\bfp}   { {\bf p} }
+\newcommand {\bfz}   { {\bf z} }
+\newcommand {\bfy}   { {\bf y} }
+\newcommand {\bfk}   { {\bf k} }
+\newcommand {\bfm}   { {\bf m} }
+
+\newcommand {\bfK}  { {\bf K} }
+\newcommand {\bfP}  { {\bf P} }
+\newcommand {\bfA}  { {\bf A} }
+\newcommand {\bfB}  { {\bf B} }
+\newcommand {\bfG}  { {\bf G} }
+\newcommand {\bfF}  { {\bf F} }
+\newcommand {\bfI}  { {\bf I} }
+\newcommand {\vu}  { {\vec {\bf  u}} }   % continuous flow field
+\newcommand {\vuref} {\vu_{\text{ref}}}  % continuous reference flow field
+\newcommand {\vq}  { {\vec {\bf  q}} }
+\newcommand {\ve}  { {\vec {\bf  e}} }
+\newcommand {\vh}  { {\vec {\bf  h}} }
+\newcommand {\vx}    {\vec {\bf x}}     
+\newcommand {\bx}    {{\bf{x}}}     
+\newcommand {\bfr}    {{\bf{r}}}     
+\newcommand {\bflambda}    {{\boldsymbol{\lambda}}}     
+\newcommand {\blambda}	 { {\boldsymbol \lambda} }
+\newcommand {\bmu}    	 { {\boldsymbol \mu} }
+\newcommand {\zero}   	 { {\bf 0} }
+\newcommand {\gb}      	 { {\bf g} }
+\newcommand {\bnabla}	 { { \boldsymbol \nabla} }
+\newcommand {\btheta}	 { { \boldsymbol \theta} }
+\newcommand {\balpha}	 { { \boldsymbol \alpha} }
+\newcommand {\bfxi}		 { { \boldsymbol \xi} }
+\newcommand{\hf}		 {\frac12}
+\newcommand{\hx}[1]		{{\ensuremath{h^x_{\scriptscriptstyle #1}}}}
+\newcommand{\hy}[1]		{{\ensuremath{h^y_{\scriptscriptstyle #1}}}}
+\newcommand{\hz}[1]		{{\ensuremath{h^z_{\scriptscriptstyle #1}}}}
+\newcommand{\E}			{\vec{E}}
+\newcommand{\A}			{\vec{A}}
+\renewcommand{\H}		{\vec{H}}
+\newcommand{\J}			{\vec{J}}
+\newcommand{\F}			{\vec{F}}
+\newcommand{\M}			{\vec{M}}
+\newcommand{\s}{\vec{s}}
+\newcommand{\h}{\vec{h}}
+\newcommand{\sig}{\sigma}
+\newcommand{\nn}{\vec{n}}
+\renewcommand{\div}{\nabla\cdot\,}
+\newcommand{\grad}{\ensuremath {{\bf{ \nabla}}}}
+\newcommand{\curl}{\ensuremath{{\nabla}\times\,}}
+\newcommand{\alert}[1] {\textcolor{red}{#1}}
+\newdimen\iwidth\iwidth=30mm
+	\newcommand{\rottext}[1]{\rotatebox{90}{\hbox to 30mm{\hss #1\hss}}}
+\newcommand{\rme}{\rm{e}}
+\newcommand{\HRule}{\rule{\linewidth}{0.25mm}}
+\newcommand{\bA}  { {\bf A} }      % transport matrix
+\newcommand{\bB}  { {\bf B} }      % matrix for initial condition of hyperbolic problem, B=[T;0;...;0]
+\newcommand{\bc}  { {\bf c} }      % time series of concentration, c = [c1,...,cN]
+\newcommand{\bS}  { {\bf S} }      % Hessian (gaussian)
+\newcommand{\bH}  { {\bf H} }      % Hessian (gaussian)
+\newcommand{\bI}  { {\bf I} }      % identity matrix
+\newcommand{\bF}  { {\bf F} }      % tomography matrix
+\newcommand{\bG}  { {\bf G} }      % image gradient, G = dT = GRAD( T * s)
+\newcommand{\bR}  { {\bf R} }      % cholesky
+\newcommand{\bK}  {\text{{\bf K}}} % design Geophysics matrix
+\newcommand{\bT}  {\text{\bf T}} % push forward matrix
+\newcommand{\bM}  {\text{{\bf M}}} % interpolation matrix
+\newcommand{\bfJ}  {\text{{\bf J}}} % interpolation matrix
+\newcommand{\bfW}  {\text{{\bf W}}} % design weights matrix
+\newcommand{\bfL}  {\text{{\bf L}}} % regulariztion operator matrix
+\newcommand{\bfE}  {\text{{\bf E}}} % regulariztion operator matrix
+\newcommand{\JJ}  {\mathcal{J}}    % objective functional
+\newcommand{\cD}  {\mathcal{D}}    % data misfit
+\newcommand{\CR}  {\mathcal{R}}    % regularization functional
+\newcommand{\CRflow}  {\mathcal{R}^{\text{flow}}}    %  flow 
+\newcommand{\CRsat}   {\mathcal{R}^{\text{s}}}     %  saturation 
+\newcommand{\CF}  {\mathcal{F}}    % continuous tomography operator
+\newcommand{\sh}  {\texttt{s}}     % discretized initial slowness
+\newcommand{\DIVh}   {{\textsf{DIV}}}  % discretized divergence 
+\newcommand{\CURLh}  {{\textsf{CURL}}} % discrete curl operator
+\newcommand{\GRADh}  {{\textsf{GRAD}}} % discrete gradient operator
+\newcommand{\W}{\text{\bf W}}
+\newcommand{\C}{\text{\bf C}}
+\newcommand{\shat}{\widehat{s_0}}
+\newcommand{\shatk}{\widehat{s}}
+\newcommand{\mhat}{\widehat{\bf m}}
+\newcommand{\what}{\widehat{\bf w}}
+\newcommand{\Sig}{\bf \Sigma}
+\newcommand*\xbar[1]{%
+  \hbox{%
+    \vbox{%
+      \hrule height 0.5pt % The actual bar
+      \kern0.5ex%         % Distance between bar and symbol
+      \hbox{%
+        \kern-0.em%      % Shortening on the left side
+        \ensuremath{#1}%
+        \kern-0.15em%      % Shortening on the right side
+      }%
+    }%
+  }%
+} 
+\newcommand{\mbar}{\xbar{\bf m}}
+\newcommand{\wbar}{\xbar{\bf w}}
+\newcommand{\dbar}{\xbar{\bf d}}
+\newcommand{\Fbar}{\xbar{\bf F}}
+\def\kronecker{\raisebox{1pt}{\ensuremath{\:\otimes\:}}} 
+\sloppy
+
+
+
+\begin{document}
+
+\title{Adaptive A-optimal experimental design for imaging dynamic targets}
+\author{J. Fohring and E. Haber }
+
+
+\maketitle
+\begin{abstract}
+Efficiently monitoring subsurface flow using geophysical imaging techniques is important to several applications such as aquifer characterization or enhanced oil recovery projects.
+One method of increasing monitoring efficiency is to control the number of measurements required for a geophysical survey in an optimal way. To optimally design future geophysical experiments, we use A-optimal design methods while incorporating the flow dynamics.  
+
+ A-optimal design methods minimize the posterior covariance matrix associated with estimating the target subsurface model. We reformulate the MAP estimate for the prior target in order to design for the future target, such that the problem is constrained by the flow dynamics. In this way, the prior experiments collected data and flow dynamics contribute to the design of the next experiment, thus incorporating updated information to the design algorithm. 
+ 
+The method is demonstrated for a two dimensional borehole seismic tomography experiment and a three dimensional seismic survey. An advection model  is applied to describe subsurface flow and  propagate the error covariance matricies forward in time. 
+ 
+
+
+\end{abstract}
+
+
+
+\section{Introduction} 
+\begin{itemize}
+
+\item Monitoring; Many problems in geophysics address the issue of monitoring subsurface flow, such as aquifer characterization, enhanced oil recovery, or saltwater intrusion. In general one would like to image the motion of certain subsurface parameters over a period of time.  One method to do so is to collect measurements dependent on these parameters and invert through a mathematical relationship to recover parameter distributions. When monitoring for these dynamic parameters, the choice of where the data are collected becomes important as resolution is both temporally and spatially dependent. 
+
+\item much has been done in experimental designs for linear and nonlinear problems...A optimal, etc.. appropriate references. As well as for large scale ill posed, refs.  inverting for fluid parameters given geophysical imaging...refs...talk about seismic, and helmolz and simultaneous sources
+
+\item Determining the design of the data collection experiment requires knowledge of the target parameter distribution. Typically optimal experimental design methods rely on minimizing the posterior error covariance matrix, associated with estimating the target through the inversion of geophysical data. This poses a problem, particularly for static cases, since the point of  the data collection is to image the unknown target. However, if the dynamics governing the motion of the unknown target are known, even to a small degree in accuracy, then it is possible to design the data collection experiment to be conducted in the future as the target moves. In order to design for a future experiment it is necessary to know the initial distribution of target parameters as well as the dynamics. If the initial condition is provided with the dynamics, then either an iterative approach or and all at once approach can be taken to determine date collection designs for a set of time points. 
+\item ideally, incorporation of real data in the estimation of historic, but also future experimental designs would lead to the best estimates. Adaptively, chase the target, by recomputing the design after data is collected. 
+
+%\item An all at once method would seek to recover the next design given all previous designs  for a set of time points, and the dynamics.  This method requires an 'all at once' prior covariance matrix.  However, This method puts a great deal of trust into the dynamic model. If for example, the velocity field in which a tracer is advected is known to very low accuracy then the designs and location of the tracer target far into the future would have significant error. Therefore we restrict our future designs to only one time step. 
+
+\item We also consider what happens if we wish to recover/update the parameters governing the fluid flow. How does this change designs for the future time step? 
+
+
+\item computational limitations: (constrained all at once, no error) no historic info included, (Kalman formulation, error) covariance matrices are large and dense, making factorization/ reduction techniques difficult. geophysical experiments are computationally expensive. (adaptive, constrained)
+no covariance matrices to worry about, includes last data set/design, can easily tack on regularization.
+\end{itemize}
+
+
+\section{Mathematical formulation}
+This section  introduces the notation for the governing equations of the subsurface dynamics and borehole tomography geophysics experiment, presents a brief overview of A-Optimal experimental design, and finally  discussion of our approach to designing experiments for the flow simulation while including historic experimental designs. 
+
+
+\subsection{Tracer dynamics} 
+The subsurface dynamics are described by the  tracer advection equations as presented by \cite{Chen2006}, which characterize  the transport of a solute in a fully saturated porous media, 
+\begin{subequations}
+\label{floweq}
+\begin{eqnarray}
+ \label{eq:flow}
+&&\frac{\partial( c \rho)}{\partial t} + \div c \rho \vu  = 0,\\
+\nonumber
+ &&\text{ subject to } c\rho(0,\vx) = c_0\rho(\vx),
+\end{eqnarray}
+  with hydraulic conductivity $\bfK$, and tracer concentration $c$ in a fluid of density $\rho$. 
+  The fluid velocity field $\vu$ satisfies the simple source-sink ($q$) flow model  
+\begin{eqnarray}
+\label{eq:flowp}
+&&  \div  \vu =   q \\ % \mu^{-1}\bfK(\bfx) \grad p
+\label{eq:flowu}
+&& \vu =  \bfK(\vx)  \grad p \\
+\label{eq:incond}
+&&  p(0,\vx) = p_0(\vx),
+\end{eqnarray}
+\end{subequations}
+ with either Dirichlet or Neumann boundary conditions on the pressure $p$.\\
+%
+
+With the goal being to image the motion of the tracer, $c(t,\vx)$, we assume that changes in $c$ amount to changes in geophysical properties. This implies that $m(c)$ exists, and that the motion of $m$ is governed by Equation \eqref{eq:flow}. From  now on were refer only to $m$. 
+
+
+To discretize equations \eqref{floweq}, particle in cell discretization was chosen such that equation \eqref{eq:flow} is given by,
+\begin{equation*}
+\bfm _k= \bT(\bfu)\bfm_{k-1} 
+\end{equation*}
+and the fluid velocity field $\bfu$ was computed by solving equations \eqref{eq:floweq} with hydraulic conductivities for $\bfK$ ranging from 
+
+\begin{figure}[h!]
+\begin{center}
+\	\includegraphics[width=0.75\textwidth]{figures/flow}
+\end{center}
+\caption{Flow field}
+\end{figure}
+\subsection{Seismic borehole tomography}
+ A typical tomography experiment measures the travel times between sources $n_s$ and receivers $n_r$. Travel times are given by integrating the slowness  $m(t,\vx)$ , or inverse acoustic velocity of the media,  along a ray path $\Gamma$,
+\begin{equation*}\label{eq:tomo}
+\bfd_{j,k}(t) =  \int\limits_{\Gamma_{j,k}} m(t,\vx)\, d\ell.
+\end{equation*}
+ Assuming the data are noisy and measured at times $(t_0,...t_n)$ the tomography problem is given by 
+ \begin{equation*}
+ \CF m(t_{k},\vx) + \epsilon_{k}  = \bfd(t_{k}).\\
+\end{equation*}
+
+Discretizing on a staggered 2D grid using a finite volume scheme 
+places $s$ and ${\bf d}$ at the cell centers. Therefore the discrete tomography experiment at each time step is then given by 
+$
+ 	\bF{\bfm_k} = \bfd_k, \text{ for } k=1,\ldots,n.
+$
+The tomography experiment was setup with 3 boreholes with 5 sources in the east borehole, 10 surface receivers, 10 receiver in the center borehole, and 10 receivers in the west borehole. The boreholes are 200m apart and 100m deep, as shown in figure
+\begin{figure}[h!]
+\begin{center}
+\	\includegraphics[width=0.75\textwidth]{figures/initialExperiment}
+\end{center}
+\caption{Initial experiment setup. Sources are pictured in green on the left and receivers in blue on the surface, center, and right. The initial setup covers the entire flow domain.}
+\end{figure}
+
+
+
+
+ 
+%\subsubsection{Comparing solution methods} % (fold)
+%To compare solutions methods, an experiment was conducted where data were collected from all source receiver combinations allowed. Initial estimates of $\Sig_0$ and the best Tikhonov regularization parameter $\alpha_0$ were obtained by a standard cooling algorithm and Pareto curve. All three solution methods were considered for a small problem. The inverse prior covariance matrix was computed explicitly, and the full system was solve. The lanczos method was used by factoring the explicit prior covariance, and finally the krylov method was used such that nothing was formed or computed explicitly. 
+%\todo[inline]{did this for one time step. works fine. krylov takes for ever. Had to go to super good 1e-9 accuarcy and high iterations to get a solution that matches the others. Weights very sensitive to how accurate this was solved}
+
+\subsection{A-Optimal experimental design } 
+To begin, a brief review of Bayesian A-optimal experimental design  is given as presented in full detail in \cite{habera} \cite{Alexanderian}. 
+
+\bigskip
+
+Consider the discrete static  ill-posed inverse problem of estimating  model parameters $\bfm \in \mathbb{R}^{N}$ from noisy observation data $\bfd \in \mathbb{R}^{M}$, 
+\begin{equation*}
+\bfd - \bfF \bfm = {\bf \epsilon},
+\end{equation*} 
+where $ M = ns \times nr$ is the number of sources times the number of receivers, and $\bfF$ is an $M \times N$ matrix with each row representing an experiment. 
+ 
+Assuming a Bayesian approach is taken with the posterior estimate  $\mhat$ conditioned on a known prior distribution $\pi_m = N({\bf \mu},\Sig)$, and that the error ${\bf \epsilon}$ is Gaussian $N(0,\W^{-1})$, the Bayesian posterior estimate is obtained by minimizing the negative log-likelihood of Bayes rule resulting in,
+\begin{eqnarray*}
+\mhat(\bfw) &=& \text{ argmin } (\bfF \bfm- \bfd)^{\top} \W(\bfF \bfm- \bfd) + (\bfm-{\bf \mu})^{\top}\Sig^{-1}(\bfm-{\bf \mu})\\
+ &=& (\bfF^{\top} \W \bfF + \Sig^{-1})^{-1}(\bfF^{\top} \W \bfd + \Sig^{-1}{\bf \mu}).
+\end{eqnarray*}     
+ The weighting matrix $\W = \text{diag}[\bfw] \text{ where } \bfw = (\omega_1,..,\omega_M)^{\top}$, relates to the data variance as Var($d_{i}$) $=1/\omega_i$. 
+ 
+\bigskip
+
+
+A-optimal experimental designs for well-posed inverse problems are defined by  minimizing the average variance of the estimate $\mhat$, thus minimizing the posterior covariance matrix of $\mhat$ \cite{Atkinson1992}, 
+  
+  \begin{equation}
+  \label{AB}
+  \phi_{A_B}(\bfw) = \text{tr}[(\bfF^{\top} \W \bfF + \Sig^{-1})^{-1}].
+  \end{equation}
+
+
+Given $\phi_{A_B}$, a design can be computed by solving a sparsity controlled optimal design optimization problem \cite{Haber2008}. The design weights $\omega_i$ are determined  by minimizing  $\phi(\bfw)$ with an $\l_1$ penalty on  $\bfw$ to promote sparsity,
+
+
+\begin{eqnarray}
+\label{design}
+&\widehat{\bfw}& = \text{ arg min } \phi(\bfw) + \beta\|\bfw\|_1\\
+\nonumber
+ &\text{ s.t.}& 0 \geq \omega_i.
+\end{eqnarray}
+
+It is important to note that in this formulation $\mhat$ is chosen to be a linear (or affine) function of the data, although  other estimators could be used, such as a Tikhonov estimator. Since the idea is to  design experiments at future time steps for linear dynamic problems  where the estimators covariance matrix can be estimated, the simple Bayesian estimator is sufficient.
+
+
+
+
+
+
+
+
+
+\section{Designing experiments for dynamic targets}
+\label{dynamicDesign}
+There are several considerations to be made when addressing the problem of designing experiments for a dynamic system, such as whether or not to account for error in the dynamics? Should historic data be used to update the dynamic model parameters? Does doing so change the optimal design? Does including all historic designs to get an optimal design for the future time step differ from a design computed using only the last design? Here we will consider these questions. 
+
+To begin, consider the  dynamic process and imaging  described  by the following set of linear equations
+ \begin{subequations}
+\begin{eqnarray}
+\label{eq:system}
+\bfm _k&=& \bT(\bfu)\bfm_{k-1} + {\bf \eta_k},\\
+\bfd_k &=& \bfF \bfm_k + {\bf \epsilon_k},
+\end{eqnarray}  
+\end{subequations}
+where the transport matrix $\bT: \mathbb{R}^{N} \rightarrow \mathbb{R}^{N}$ is dependent on the parameter $\bfu(\bfx)$, and the noise vectors $\eta $ and $\epsilon $ are assumed to be Gaussian normal, $\eta \sim N(\eta_0,\Sig_{\eta})$ and ${\bf \epsilon} \sim N(\epsilon_0,\W^{-1})$.
+
+There are several ways to look at this problem when considering how to estimate and design for $\bfm_k$. We could argue that the noise in the dynamics is insignificant, set $\eta_k = 0,$ and write the system as one equation. This leads to the A-optimal designs  presented in \cite{Alexanderian2014}, where given a Bayesian estimation for $\bfm_0$, designs are recovered for all subsequent time points  presented in Section \ref{noNoise}.
+Alternately, we could design for a linear Kalman filter formulation. In Bayesian terms, the dynamics provide all the information for the prior distribution. Estimations for $\bfm_k$ can either be written in an iterative manner, or as an all at once estimation (Kalman smoothing). Designing for the Kalman estimator results in designs for a set of times, without the inclusion of historic data, and where the error associated with the dynamics is propaged in time, present in Section \ref{constrained}. 
+
+However,  in reality estimating an optimal design should depend on available data from the previous experiment. To include this data we reformulate the estimation of the previous model $\bfm_{k-1}$ by including the constraint $\bfm_k = \bT\bfm_{k-1}$.
+In Section \ref{adaptive}  write the problem as an iterative method that computes an optimal design for a future time point based on either all historic data, or one the last data set collection. 
+
+\subsection{Design,  no noise in dynamics}
+\label{noNoise}
+Beginning with the simplest case, where $\eta_k = 0$ and $\bfu$ is known in equations \eqref{eq:system} such that $\bT \leftarrow \bT(\bfu)$, we will build an objective function in terms of an initial condition $\bfm_0$ for a set of time points $k = 1,...,n$
+ for all  models $\mbar = [\bfm_1,\bfm_2,...,\bfm_n]^{\top}$ given a set of data $\bar{\bfd} = [\bfd_1,\bfd_2,...,\bfd_n]^{\top}$,
+
+ Writing the dynamic equation in block form gives
+\begin{equation}\label{eq:FlowSystem}
+	 \underbrace{
+		\left( 
+			\begin{array}{rrrrr}
+				- \bI      &           &         &        &        \\
+				  \bT & -\bI      &         &        &        \\
+				           &  \bT & -\bI    &        &        \\
+				           &           &  \ddots & \ddots &        \\
+				           &           &         & \bT    & -\bI   \\
+			\end{array}
+		\right)
+	 }_{=: \bA}
+	 \underbrace{
+		\left(
+			\begin{array}{r}
+				\bfm_1 \\ \bfm_2 \\ \bfm_3 \\ \vdots \\ \bfm_n
+			\end{array}
+		\right)
+	 }_{=: \bfm}
+	+
+	 \underbrace{
+		\left(
+			\begin{array}{c}
+			\bT \\ 0  \\ 0\\ \vdots \\ 0
+			\end{array}
+		\right)
+	 }_{=: -\bB}
+	\bfm_0
+	= 
+	{\bf 0}.
+\end{equation}
+Thus, the set of models can then be written as the solution to the system
+\begin{equation}
+\mbar = \bA(\bu)^{-1} \bB(\bu) \bfm_0.
+\end{equation}
+
+Assuming that the imaging technique does not change in time, the  negative log data likelihood is given by
+\begin{equation}
+\hf \Big((\bI \kronecker \bF) \bA(\bu)^{-1} \bB(\bu) \bfm_0- \bar{\bfd} \Big)^{\top} \xbar{\bfW} \;\; \Big((\bI \kronecker \bF)  \bA(\bu)^{-1} \bB(\bu) \bfm_0 -\bar{\bfd} \Big)
+\end{equation}
+where, $\xbar{\bfW}$ is a block diagonal matrix with diagonal weight matrices $\bfW_1,\bfW_2,...,\bfW_n$ on its main diagonal for  time points $ k = 1,2,...,n$.
+
+Given a prior distribution for $\mbar \sim N(\mbar_{\;0},\Sig_{\mbar})$, with $\Sig_{\mbar} = \text{blkdiag}(\Sig_{\eta_1},..,\Sig_{\eta_n})$, the posterior covariance for the Bayes estimate $\mhat_0$ is 
+\begin{equation}
+\label{noNoiseCov}
+\Sig_{\mhat_0} = \Big(((\bI \kronecker \bF) \bA^{-1} \bB)^{\top}\;
+\xbar{\bfW}\;(\bI \kronecker \bF) \bA^{-1} \bB + \Sig_{\mbar}^{-1}\Big)^{-1}
+\end{equation}
+Thus the Bayesian A-optimal design functional becomes
+ \begin{equation}
+  \label{AB}
+  \phi_{A_B}(\wbar) = \text{tr}\Big[\Big(((\bI \kronecker \bF) \bA^{-1} \bB)^{\top}\;
+\xbar{\bfW}\;(\bI \kronecker \bF) \bA^{-1} \bB + \Sig_{\mbar}^{-1}\Big)^{-1}\Big],
+  \end{equation} 
+where the designs recovered are for all times points $k=1,...,n$.
+ This method was demonstrated in \cite{Alexanderian2014} for and advection diffusion dynamic flow problem.  Estimating designs in this way requires that we fully accept the accuracy of the dynamics, and that we know the prior distribution covariance at each time point. We could choose a linear regularization operator $\bfL$ such that $\bfL^{\top}\bfL = \Sig_k^{-1}$, as in a Tikhonov formulation to deal with the priors, but it is apparent that in reality the parameters governing the dynamics are not specifically known, or are known to low accuracy, thus reducing confidence in designs for later time points. 
+In the case of the dynamics, the dependence  on their own subsurface parameters should be considered. Ideally we would like to be able to iteratively update $\bfu$ once imaging data is collected, such that the designs are recomputed given this new and more accurate information. 
+%
+%
+%
+\subsection{Designing with noise in the dynamics}
+\label{constrained}
+Again we assume that $\bfu$ is known in equations \eqref{eq:system} so that $ \bT \leftarrow \bT(\bfu)$ , and that no initial condition is needed since there is error in the estimates of $\bfm$. Denoting $\mbar = [\bfm_1,\bfm_2,...,\bfm_n]^{\top}$ and  a set of data $\bar{\bfd} = [\bfd_1,\bfd_2,...,\bfd_n]^{\top}$ and assuming the initial condition is given by the noise $\eta_0 = \bfm_0$ and $\bT_0 = \bI$ we can write 
+
+\begin{equation}\label{eq:FlowSystem}
+	 \underbrace{
+		\left( 
+			\begin{array}{rrrrr}
+				 \bI   &   0   &         &        &        \\
+				 -\bT  & \bI      &    0     &        &        \\
+				           &  -\bT & \bI    &   \ddots     &        \\
+				           &           &  \ddots & \ddots &      0  \\
+				           &           &         & -\bT    & \bI   \\
+			\end{array}
+		\right)
+	 }_{=: \bA}
+	 \underbrace{
+		\left(
+			\begin{array}{r}
+				\bfm_1 \\ \bfm_2 \\ \bfm_3 \\ \vdots \\ \bfm_n
+			\end{array}
+		\right)
+	 }_{=: \mbar}	 
+		= 
+	{\bf 0}.
+	\end{equation}
+For a time invariant imaging technique, the Bayesian negative log likelihood is given by
+\begin{equation}
+\label{eq:Ob}
+\JJ(\mbar) = \hf \Big((\bI \kronecker \bF) \mbar- \bar{\bfd} \Big)^{\top} \xbar{\bfW} \;\; \Big((\bI \kronecker \bF)  \mbar-\bar{\bfd} \Big) + \hf \Big(\bA \mbar\Big)^{\top} \Sig_{\mbar}^{-1}\Big(\bA \mbar \Big)
+\end{equation}
+where, $\xbar{\bfW}$ is a block diagonal matrix with diagonal weight matrices $\bfW_0,\bfW_1,...,\bfW_n$ on its main diagonal,  and $\Sig_{\mbar} = \text{blkdiag}(\Sig_{\eta_1},..,\Sig_{\eta_n})$.
+
+The posterior covariance matrix obtained after minimizing $\JJ(\mbar)$ for the Bayes estimate $\mbar$ is given by
+\begin{equation}
+\bH=\Big ((\bI \kronecker \bF)^{\top}\xbar{\bfW}\;(\bI \kronecker \bF)  + \bA^{\top}\Sig_{\mbar}^{-1} \bA \Big)^{-1}
+\end{equation}
+Thus, computing an optimal design entails minimizing the trace of the inverse of the matrix $\bH$. 
+Again, 
+\begin{equation}
+  \label{AB}
+  \phi_{A_B}(\wbar) = \text{tr}\Big[\Big ((\bI \kronecker \bF)^{\top}\xbar{\bfW}\;(\bI \kronecker \bF)  + \bA^{\top}\Sig_{\mbar}^{-1} \bA \Big)^{-1}],
+  \end{equation} 
+  This formulation provides another method of designing all of the experiments given the covariance matrices for each time point. The main difference in this formulation than the previous section is that the error is now propagated in time. However, this method still does not incorporate historic designs or collected data, and it requires storing and manipulating large dense covariance matrices.  
+  %
+  %
+  %
+\subsection{Adaptive historic design}
+\label{adaptive}
+In this section  we present two reformulations of the model estimation problems such that historic data/designs are included. In this way the future design will depend information from the previous experiments and the dynamics of the problem. We will consider the formulation with a linear and a non-linear regularization term.
+
+\subsubsection{Linear regularization}
+In order to  estimate the design for an experiment at time k given a design $\bfw_{k-1}$, and thus  collected data set $\bfd^c_{k-1}$, from the previous time point $k-1$ the  model objective function is constructed in order to re-estimate $\bfm_{k-1}$ while including historic data,
+
+\begin{equation}
+\label{eq:adaptive}
+\mathcal{G}(\bfm,\bfw) = \sum_{k=1}^{n} \Big (\hf \|\bF_{k-1}\bfm_{k-1} - \bfd^c_{k-1} \|^2_2 + \hf  \| \bF \bT\bfm_{k-1} - \bfd_{k} \|^2_{\bfW_{k}} + \hf \| \bfL\bfm_{k-1} \|^2_2\Big)
+\end{equation} 
+where $\bF_{k-1} = \bfW_{k-1}\bF$, and $\bfm_{k} = \bT \bfm_{k-1}$. The operator $\bfL$ is a smoothing regularization operator. 
+One could argue in this instance that the first term including the historic data can be interpreted as a prior such that the regularization term is not necessarily required. In this way, while it appears that this is a frequentist approach, it can still be interpreted as a Bayesian one if both the collected data misfit term and the regularization combine as a prior.
+
+Minimizing equation \eqref{eq:adaptive} with respect to $\bfm_{k-1}$ yields
+the posterior covariance matrix 
+\begin{equation}
+\label{eq:post}
+\Sig_{k-1}(\bfw_k)= \Big( \bF_{k-1}^{\top}\bF_{k-1} +\bT^{\top} \bF^{\top} \bfW_k \bF \bT + \bfL^{\top}\bfL \Big)^{-1}.
+\end{equation}
+
+By formulating the problem in this manner, one can adaptively update optimal designs after each experiment has been carried out.
+ 
+The design functional to then be minimized is given by
+%
+\begin{equation}
+  \label{ABk}
+  \phi_k(\bfw_k) = \text{tr}\Big[\Big( \bF_{k-1}^{\top}\bF_{k-1} +\bT^{\top} \bF^{\top} \bfW_k \bF \bT + \bfL^{\top}\bfL \Big)^{-1}].
+  \end{equation} 
+A second benefit of building the design objective function to depend  on an historic design and data set is that the design problem does not grow in size as time progresses.  If we were to incorporate all historic data and designs, then we would end up with a rather large system. However, if all historic information is included,one could argue that this would provide a more accurate estimate and design.
+ 
+The basic algorithm illustrating the adaptive design process for a linear observation method is outlined in Algorithm \ref{Alogrithm}. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{algorithm}
+\caption{Iterative Optimal $\phi_{A_{B}}$Design}\label{Alogrithm}
+\begin{algorithmic}[1]
+%
+\State $\text{Initialize: }\bF_{0}$
+\Comment{Estimate a naive design}
+%
+\For{$k = 1 \text{ to } n$}  
+\Comment{ $n$ time points}
+%
+\State $\what_k(\bF_{k-1})$  $\ \to \text{diag}(\what_k)\bfF = \bfF_k $ \Comment{ compute the optimal design by solving \ref{design}} with \ref{ABk}
+%
+\State $\bfd_k = \bfF_k \bfm_k + \epsilon_k$
+\Comment{collect data}
+%
+\State $\bF_{k-1} \leftarrow \bF_k$
+\Comment {update F}
+\EndFor\label{euclidendwhile}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{algorithmic}
+\end{algorithm}
+
+\bigskip
+\subsubsection{Non-linear regularization}
+At this point it is important to consider what information is available when estimating the optimal design. In equation \eqref{eq:adaptive}, we added  collected data misfit term,  a linear regularization term promotes smoothness in the model $\bfm_k$, which of course appears in equation \eqref{eq:post} as $\bfL^{\top}\bfL$. However, although the design $\bF_k$ in the design objective function, the collected data does not.  To include the collected data, we can instead impose a non-linear regularization function,
+ %
+\begin{equation}
+\label{eq:adaptiveNon}
+\mathcal{G}(\bfm,\bfw) = \sum_{k=1}^{n} \Big ( + \hf  \| \bF \bT\bfm_{k-1} - \bfd_{k} \|^2_{\bfW_{k}} + R(\bfm_{k-1}) \|^2_2\Big).
+\end{equation}
+
+Since there is no closed form for the posterior covariance matrix for a non-linear inverse problem, we must apply an approximation as in \cite{Alexanderian2014}.
+Assigning the non-linear regularization functional results in an approximation to the inverse Hessian (or posterior covariance matrix) that depends on $\bfm$. Choosing a Gauss-Newton approximation of the Hessian, the optimal design optimization problem \eqref{design} becomes a bi-level optimization with an inequality constraint,
+\begin{subequations}
+\begin{eqnarray}
+\label{designNonLin}
+\underset{\bfw_k}{\text{min}}&&\text{tr} \Big[\Big( \bT^{\top} \bF^{\top} \bfW_k \bF \bT + \bS^{\top}(\mhat_{k-1})\bS(\mhat_{k-1}) \Big)^{-1}\Big ]\\
+\text{s.t.}    &&\mhat_{k-1} = \text{argmin} \hf \|\bF_{k-1}\bfm_{k-1} - \bfd^c_{k-1} \|^2_2 + R(\bfm_{k-1})\\
+&&0 \geq \omega_i,
+\end{eqnarray}
+\end{subequations}
+where $\bS(\bfm)$ is the gradient of the regularization functional $R(\bfm)$. Typically solving the lower level optimization would require a stochastic approach of averaging over a set of possible models. However, in this case the historic data is available so that the best estimator $\mhat_{k-1}$ can be recovered so that it is not necessary to sample average over a set of possibilities. 
+
+
+
+\section{Numerical optimization}
+In this section we present the computation of the gradients of the linear and non-linear design functionals.
+\subsection{Linear adaptive design}
+
+Finding an optimal design for the time step $k$ involves solving the optimization problem \ref{design} by minimizing the objective functional \eqref{ABk},
+
+
+\begin{eqnarray*}
+\widehat{\bfw_k}&=&\text{ argmin } \JJ_k := \Bigg \{\text{tr}\Big[\Big(  \bT^{\top} \bF^{\top} \bfW_k \bF \bT + \bF_{k-1}^{\top}\bF_{k-1} + \;\bfL^{\top}\bfL \Big)^{-1}\Big] + \beta \bfe^{\top}\bfw_k \Bigg \}\\
+ &\text{ s.t.}& 0 \geq \omega_i.
+\end{eqnarray*}
+where $\bfe$ is a vector of ones (the constraint allows us to write the 1-norm as a sum). 
+
+This is a difficult task for large problems, particularly due to the trace of a large dense matrix and the computation of the derivative of the trace. To this end, several actions can be taken to reduce the computational costs.
+
+First, a stochastic Hutchinson trace estimator is used to approximate the trace  \cite{Hutchinson1989} such that Equation \eqref{traceObj} can be written as
+\begin{equation}
+\label{Obj}
+\JJ_k(\bfw_k) = \bfv^{\top}(\bT^{\top} \bF^{\top} \bfW_k \bF \bT  + \bG)^{-1}\bfv + \beta \bfe^{\top}\bfw_k,
+\end{equation}
+where $\bG = \bF_{k-1}^{\top}\bF_{k-1} + \;\bfL^{\top}\bfL$ and $\bfv$ is a random vector with values $1$ and $-1$ with equal distribution. This approximation makes the computation of the derivative of $\JJ$ tractable for large problems. \\
+
+A second issue arises when computing the derivative  of $\JJ$, as this involves computing the derivative of an inverse matrix. From now on we drop the subscript $k$ for clarity,
+\begin{equation*}
+\nabla_{\bfw} \JJ(\bfw) =\bfv^{\top} \nabla_{\bfw}\Big(((\bfF \bT)^{\top} \W \bfF\bT + \bG)^{-1}\bfv \Big) + \beta \bfe.
+\end{equation*}
+To compute  the derivative of $\JJ$ we define  
+\begin{equation}
+\label{eq:z}
+\bfz = ((\bfF \bT)^{\top} \W \bfF \bT + \bG)^{-1}\bfv \quad \Leftrightarrow \quad
+((\bfF \bT)^{\top} \W \bfF \bT + \bG)\bfz = \bfv,
+\end{equation}
+%
+and differentiate implicitly to obtain 
+\begin{equation*}
+(\bfF \bT)^{\top}\text{diag}(\bfF \bT \bfz) + ((\bfF \bT)^{\top} \W \bfF \bT + \bG)\nabla_{\bfw}\bfz = 0.
+\end{equation*}
+The gradient of $\bfz$ is then given by
+\begin{equation*}
+\nabla_{\bfw}\bfz = -((\bfF \bT)^{\top} \W \bfF \bT + \bG)^{-1} (\bfF \bT)^{\top}\text{diag}(\bfF \bT \bfz).
+\end{equation*}
+\\
+Thus, the first term in $\nabla_{\bfw} \JJ(\bfw)$ is
+\begin{equation*}
+-\bfv^{\top}((\bfF \bT)^{\top} \W \bfF \bT + \bG)^{-1} (\bfF \bT)^{\top}\text{diag}(\bfF \bT \bfz). 
+\end{equation*}
+Taking the transpose 
+\begin{equation*}
+-\text{diag}(\bfF \bT\bfz)\bfF\bT((\bfF\bT)^{\top} \W \bfF\bT + \bG)^{-1} \bfv
+\quad \Leftrightarrow\quad -\text{diag}(\bfF \bT\bfz)(\bfF \bT\bfz) = -\bfF\bT \bfz \odot \bfF\bT \bfz,
+\end{equation*}
+so that the derivative of the objective function is then 
+\begin{equation}
+\nabla_{\bfw} \JJ_{k}(\bfw) =  -\bfF\bT \bfz \odot \bfF \bT\bfz + \beta \bfe.
+\end{equation}
+Since the design problem \eqref{design} is nonlinear with respect to $\bfw$, a Newton type iterative method is used with a backtracking line search. This solution method requires both the evaluation of $\JJ$ and  its gradient, which are conveniently obtained by solving for $\bfz$ only once. However, for large scale problems, the evaluation of $\bfz$ is not cheap.
+
+
+
+To reduce computational costsit is possible to first preform a Cholesky factorization on $\bG = \bR^{\top}\bR$, reduce equation \eqref{eq:z} to standard form, and then compute the  Lanczos bidiagonalization of $\bF \bT \bR^{-1}$. This process requires calculating the Cholesky factorization and  calculating $\bR^{-1}$. However, this  is evaluated only once outside of the design optimization, so depending on the problem size, it is computationally cheap. 
+
+Alternately, instead of the Lanczos approach Krylov subspace methods can be applied, such as  Conjugate Gradients, allowing us to take advantage of matrix vector products and avoid ever forming $\bG$. 
+\subsection{Non-Linear adaptive design}
+ 
+% EXAMPLE 1
+ 
+ \newpage
+\section{Numerical example: Adaptive design} % (fold)
+To demonstrate  iterative optimal experimental design, a seismic borehole tomography survey is chosen to image tracer advection in subsurface. 
+An initial spatial distribution of the tracer is provided, and the tracer is advected with the flow of water injected from one well and pumped out at another. Seismic tomography data are measured at each time step as the initial tracer model is advected using the transport matrix $\bT$. 
+
+\subsection{Experimental setup}
+The computational domain, $\Omega=[0, 100] \times [0, 200]$ meters, is divided into $m=[50, 100]$ cells of width $h=[1,1]$ meters and consists of a layered model of five rock types.
+%
+%
+\begin{figure}[h!]
+\begin{center}
+\	\includegraphics[width=0.75\textwidth]{figures/initialModel}
+\end{center}
+\caption{Initial layered Earth model.}
+\end{figure}
+
+
+
+
+\subsection{Regularization}
+linear regularization gradient operator
+nonlinear regularization
+Next, the regularization functional  for tracer is discretized. 
+Noting that $\bfm$ is discretized on a cell-centered grid, a standard discrete 
+approximation for the smoothed total variation regularization is applied~\cite{ahh}
+\begin{equation}
+\label{eq:nonLinReg}
+R^{m}(\bfm) = h^2 \bfe^{\top} \sqrt{ \bfA_{f}^{c} \left( (\GRADh\ \bfm) \odot (\GRADh\ \bfm) \right)  + \epsilon},
+\end{equation}
+where $\GRADh$ is a standard 2-point discretization of the gradient of a cell-centered variable, which maps from cell-centers to faces, as described in~\cite{ha,ahh}.
+$\bfA_{f}^{c}$ is an averaging matrix from cell-faces to cell-centers.
+Note that we somewhat abuse the notation, and that the square root of a vector is the point-wise square root.
+
+
+
+
+
+\section{Numerical example 2: Helmhotz maybe} 
+This depends on how far ahead in time we design...The all at once approach assumes the velocity field is accurate(ish)...could still solve the all at once problem for updated velocity field too. 
+
+
+
+\section{Concluding Remarks}
+
+
+
+
+
+
+\bibliographystyle{plain}
+\bibliography{../../../../Bibliographys/ProposalBib}
+
+
+
+\end{document}

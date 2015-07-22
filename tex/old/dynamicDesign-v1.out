@@ -1,0 +1,19 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{A-Optimal experimental design }{}% 2
+\BOOKMARK [1][-]{section.3}{Designing experiments for dynamic targets}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Design for no noise in dynamics}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Noise in the dynamics}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Adaptive optimal design}{section.3}% 6
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Linear regularization}{subsection.3.3}% 7
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Non-linear regularization}{subsection.3.3}% 8
+\BOOKMARK [1][-]{section.4}{Numerical optimization}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{Linear adaptive design}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Non-Linear adaptive design}{section.4}% 11
+\BOOKMARK [1][-]{section.5}{Numerical example: Adaptive design}{}% 12
+\BOOKMARK [2][-]{subsection.5.1}{Experimental setup}{section.5}% 13
+\BOOKMARK [3][-]{subsubsection.5.1.1}{Seismic borehole tomography}{subsection.5.1}% 14
+\BOOKMARK [3][-]{subsubsection.5.1.2}{Tracer dynamics}{subsection.5.1}% 15
+\BOOKMARK [3][-]{subsubsection.5.1.3}{Regularization}{subsection.5.1}% 16
+\BOOKMARK [2][-]{subsection.5.2}{Results}{section.5}% 17
+\BOOKMARK [1][-]{section.6}{Numerical example 2: Helmhotz maybe}{}% 18
+\BOOKMARK [1][-]{section.7}{Concluding Remarks}{}% 19

@@ -1,0 +1,17 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{A-Optimal experimental design for linear ill-posed problems}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Designing experiments for dynamic model parameters}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Numerical optimization for dynamic A-optimal design}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Understanding the covariance matrix}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Numerical example 1: Iterative design, known flow model}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Travel time tomography}{section.3}% 7
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Comparing solution methods}{subsection.3.1}% 8
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Mesh refinement}{subsection.3.1}% 9
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Time step restriction}{subsection.3.1}% 10
+\BOOKMARK [2][-]{subsection.3.2}{DC Resistivity}{section.3}% 11
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Comparing solution methods}{subsection.3.2}% 12
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Mesh refinement}{subsection.3.2}% 13
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Time step restriction}{subsection.3.2}% 14
+\BOOKMARK [1][-]{section.4}{Numerical example 2: Iterative design, estimating the velocity as well}{}% 15
+\BOOKMARK [1][-]{section.5}{Concluding Remarks}{}% 16
+\BOOKMARK [1][-]{section.6}{References}{}% 17
