@@ -1,0 +1,16 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{ Adaptive experimental design }{}% 2
+\BOOKMARK [1][-]{section.3}{Dynamic target}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Noiseless model dynamics}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Noisy model dynamics}{section.3}% 5
+\BOOKMARK [1][-]{section.4}{Numerical optimization}{}% 6
+\BOOKMARK [2][-]{subsection.4.1}{Noiseless dynamics}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.2}{Noisy dynamics}{section.4}% 8
+\BOOKMARK [1][-]{section.5}{Numerical Examples }{}% 9
+\BOOKMARK [2][-]{subsection.5.1}{Imaging: seismic borehole tomography}{section.5}% 10
+\BOOKMARK [2][-]{subsection.5.2}{Dynamics: Tracer advection}{section.5}% 11
+\BOOKMARK [2][-]{subsection.5.3}{Regularization}{section.5}% 12
+\BOOKMARK [1][-]{section.6}{Results: Noiseless dynamics}{}% 13
+\BOOKMARK [1][-]{section.7}{Results: Noisy dynamics}{}% 14
+\BOOKMARK [1][-]{section.8}{Concluding remarks}{}% 15
+\BOOKMARK [1][-]{section.9}{References}{}% 16

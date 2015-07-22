@@ -1,0 +1,131 @@
+\begin{thebibliography}{10}
+
+\bibitem{Ajo-Franklin2009}
+Jonathan~B. Ajo-Franklin.
+\newblock {Optimal experiment design for time-lapse traveltime tomography}.
+\newblock {\em Geophysics}, 74(4):Q27--Q40, July 2009.
+
+\bibitem{Alexanderian2014}
+Alen Alexanderian, Noemi Petra, Georg Stadler, and Omar Ghattas.
+\newblock {A-Optimal design of experiments for infinite-dimensional Bayesian
+  linear inverse problems with regularized $l_0$ - sparsification}.
+\newblock {\em SIAM Journal on Scientific Computing}, 36(5):2122--2148, 2014.
+
+\bibitem{Ascher2006}
+U.~M. Ascher, E.~Haber, and H.~Huang.
+\newblock {On Effective Methods for Implicit Piecewise Smooth Surface
+  Recovery}.
+\newblock {\em SIAM Journal on Scientific Computing}, 28(1):339--358, January
+  2006.
+
+\bibitem{Atkinson1992}
+Anthony~Curtis Atkinson and Alexander~N. Donev.
+\newblock {\em {Optimum Experimental Designs}}.
+\newblock Clarendon Press, 1992.
+
+\bibitem{Banks2011}
+H~T Banks, Kathleen Holm, and Franz Kappel.
+\newblock {Comparison of Optimal Design Methods in Inverse Problems.}
+\newblock {\em Inverse problems}, 27(7), July 2011.
+
+\bibitem{Bardow2008}
+Andr\'{e} Bardow.
+\newblock {Optimal experimental design of ill-posed problems: The METER
+  approach}.
+\newblock {\em Computers \& Chemical Engineering}, 32(1-2):115--124, January
+  2008.
+
+\bibitem{Multigrid}
+W.~Briggs, V.~Henson, and S.~McCormick.
+\newblock {\em A Multigrid Tutorial, Second Edition}.
+\newblock Society for Industrial and Applied Mathematics, second edition, 2000.
+
+\bibitem{Chen2006}
+Zhangxin Chen, Guanren Huan, and Yuanle Ma.
+\newblock {\em {Computational Methods for Multiphase Flows in Porous Media}}.
+\newblock SIAM, 2006.
+
+\bibitem{Coles2009a}
+Darrell~a. Coles and Frank~Dale Morgan.
+\newblock {A method of fast, sequential experimental design for linearized
+  geophysical inverse problems}.
+\newblock {\em Geophysical Journal International}, 178(1):145--158, July 2009.
+
+\bibitem{Curtis1999}
+Andrew Curtis.
+\newblock {Optimal experiment design: cross-borehole tomographic examples}.
+\newblock {\em Geophysical Journal International}, 136(3):637--650, March 1999.
+
+\bibitem{Fedorov1972}
+V.V. Fedorov.
+\newblock {\em {Theory Of Optimal Experiments}}.
+\newblock Elsevier, 1972.
+
+\bibitem{Fohring2014}
+J~Fohring, E~Haber, and L~Ruthotto.
+\newblock {Geophysical imaging of fluid flow in porous media}.
+\newblock {\em SIAM Journal on Scientific Computing}, 36(5):218--236, 2014.
+
+\bibitem{Haber2008}
+E~Haber, L~Horesh, and L~Tenorio.
+\newblock {Numerical methods for experimental design of large-scale linear
+  ill-posed inverse problems}.
+\newblock {\em Inverse Problems}, 24(5):055012, October 2008.
+
+\bibitem{Haber2011}
+Eldad Haber, Zhuojun Magnant, Christian Lucero, and Luis Tenorio.
+\newblock {Numerical methods for A-optimal designs with a sparsity constraint
+  for ill-posed inverse problems}.
+\newblock {\em Computational Optimization and Applications}, 52(1):293--314,
+  April 2011.
+
+\bibitem{Hus1989}
+Nien-Sheng Hus and William W-G Yeh.
+\newblock {Optimum Experimental Design for Parameter Identification of
+  groundwater hydrology}.
+\newblock {\em Water}, 25(5):1025--1040, 1989.
+
+\bibitem{Hutchinson1990}
+M.F. Hutchinson.
+\newblock {A stochastic estimator of the trace of the influence matrix for
+  laplacian smoothing splines}.
+\newblock {\em Communications in Statistics - Simulation and Computation},
+  19(2):433--450, January 1990.
+
+\bibitem{Kalman1960}
+R~E Kalman.
+\newblock {A New Approach to Linear Filtering and Prediction Problems 1}.
+\newblock {\em Transaction of the ASME - Journal of Basic Engineering},
+  82(Series D):35--45, 1960.
+
+\bibitem{Lucero2013}
+Christian Lucero.
+\newblock {PhD Thesis: Bayes risk A-optimal experimental design for ill-posed
+  inverse problems}, 2013.
+
+\bibitem{Maurer2000}
+Hansruedi Maurer, David~E Boerner, and Andrew Curtis.
+\newblock {Design strategies for electromagnetic geophysical surveys}.
+\newblock {\em Inverse Problems}, 16(5):1097--1117, October 2000.
+
+\bibitem{GMRES}
+Youcef Saad and Martin~H. Schultz.
+\newblock Gmres: A generalized minimal residual algorithm for solving
+  nonsymmetric linear systems.
+\newblock {\em SIAM Journal on Scientific and Statistical Computing},
+  7(3):856--869, 1986.
+
+\bibitem{Verdinelli2013}
+Isabella Verdinelli.
+\newblock {Bayesian Experimental Design : A Review}.
+\newblock 10(3):273--304, 2013.
+
+\bibitem{Wilkinson2012}
+Paul~B Wilkinson, Meng~Heng Loke, Philip~I Meldrum, Jonathan~E Chambers, Oliver
+  Kuras, David~A Gunn, Richard~D Ogilvy, British~Geological Survey,
+  Kingsley~Dunham Centre, Geotomo Software, and Minden Heights.
+\newblock {Practical aspects of applied optimised survey design for Electrical
+  Resistivity Tomography}.
+\newblock 2012.
+
+\end{thebibliography}

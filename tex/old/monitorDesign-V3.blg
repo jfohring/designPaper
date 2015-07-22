@@ -1,0 +1,9 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: monitorDesign-V3.aux
+The style file: plain.bst
+Illegal, another \bibdata command---line 126 of file monitorDesign-V3.aux
+ : \bibdata
+ :         {../../../../Biblio/biblio}
+I'm skipping whatever remains of this command
+Database file #1: designBib.bib
+Warning--empty school in Aravkin2010
+(There was 1 error message)

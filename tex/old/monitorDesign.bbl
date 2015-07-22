@@ -1,0 +1,60 @@
+\begin{thebibliography}{10}
+
+\bibitem{MultiGrid}
+{\em 2. Basic Iterative Methods}, chapter~2, pages 7--30.
+
+\bibitem{Ajo-Franklin2009}
+Jonathan~B. Ajo-Franklin.
+\newblock {Optimal experiment design for time-lapse traveltime tomography}.
+\newblock {\em Geophysics}, 74(4):Q27--Q40, July 2009.
+
+\bibitem{Alexanderian2014}
+Alen Alexanderian, Noemi Petra, Georg Stadler, and Omar Ghattas.
+\newblock {A-Optimal design of experiments for infinite-dimensional Bayesian
+  linear inverse problems with regularized l0 - sparsification}.
+\newblock {\em SIAM Journal on Scientific Computing}, 36(5):2122--2148, 2014.
+
+\bibitem{Aravkin2010}
+Aleksandr Aravkin.
+\newblock {\em {Robust Methods for Kalman Filtering / Smoothing and Bundle
+  Adjustment}}.
+\newblock PhD thesis, 2010.
+
+\bibitem{Ascher2006}
+U.~M. Ascher, E.~Haber, and H.~Huang.
+\newblock {On Effective Methods for Implicit Piecewise Smooth Surface
+  Recovery}.
+\newblock {\em SIAM Journal on Scientific Computing}, 28(1):339--358, January
+  2006.
+
+\bibitem{Atkinson1992}
+Anthony~Curtis Atkinson and Alexander~N. Donev.
+\newblock {\em {Optimum Experimental Designs}}.
+\newblock Clarendon Press, 1992.
+
+\bibitem{Bardow2008}
+Andr\'{e} Bardow.
+\newblock {Optimal experimental design of ill-posed problems: The METER
+  approach}.
+\newblock {\em Computers \& Chemical Engineering}, 32(1-2):115--124, January
+  2008.
+
+\bibitem{Fohring2014}
+J~Fohring, E~Haber, and L~Ruthotto.
+\newblock {Geophysical imaging of fluid flow in porous media}.
+\newblock {\em SIAM Journal on Scientific Computing}, 36(5):218--236, 2014.
+
+\bibitem{Haber2008}
+E~Haber, L~Horesh, and L~Tenorio.
+\newblock {Numerical methods for experimental design of large-scale linear
+  ill-posed inverse problems}.
+\newblock {\em Inverse Problems}, 24(5):055012, October 2008.
+
+\bibitem{Haber2011}
+Eldad Haber, Zhuojun Magnant, Christian Lucero, and Luis Tenorio.
+\newblock {Numerical methods for A-optimal designs with a sparsity constraint
+  for ill-posed inverse problems}.
+\newblock {\em Computational Optimization and Applications}, 52(1):293--314,
+  April 2011.
+
+\end{thebibliography}
