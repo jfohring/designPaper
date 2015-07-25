@@ -8,12 +8,12 @@
 \usepackage{latexsym}
 %\usepackage{pstricks}
 %usepackage{tikz,pgflibraryplotmarks}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-%\usepackage{hyperref}
-\usepackage[nottoc,numbib]{tocbibind} 
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+\usepackage[colorlinks,pdfmark,dvips]{hyperref}
+%\usepackage[nottoc,numbib]{tocbibind} 
 \usepackage{todonotes}
-\usepackage{natbib}
+%\usepackage{natbib}
 
 \newcommand{\bfA}	{{\bf{A}}}
 \newcommand{\bfB}	{{\bf{B}}}
@@ -354,7 +354,6 @@ Consider now using the design problem of estimating $\bfm$ given the estimated m
 One could rewrite the recovery problem in a similar way,
 that is
 \begin{align}
-\label{mest2}
 \bfmhat_{2} = {\rm arg}\min\ \hf \| \bfF_{1} \bfm - \bfd_{1}\|^{2}_{\bfW_{1}} + \hf \| \bfF_{2} \bfm - \bfd_{2}\|^{2}_{\bfW_{2}}  + {\frac {\alpha} 2}
 \|\bfL (\bfm -\bfmhat_{0}) \|^{2}_2. 
 \end{align}
@@ -631,7 +630,7 @@ This computation is easily carried out by defining $\bfz$ such that
 \end{equation}
   recalling that $\bfW_k = {\sf diag}(\bfw_k)$, and differentiating implicitly to obtain that
 \begin{equation*}
-\bfF_k^{\top}{\sf diag}(\bfF_k\bfz) + \bfF_k^{\top}{\sf diag}(\bfw_k)\bfF_k +\bfG)\grad_{\bfw_k}\bfz =\zero.
+\bfF_k^{\top}{\sf diag}(\bfF_k\bfz) + \bfF_k^{\top}{\sf diag}(\bfw_k)\bfF_k +\bfG)\Grad_{\bfw_k}\bfz =\zero.
 \end{equation*}
 Solving for the gradient of $\bfz$ we have,
 \begin{equation*}
@@ -708,7 +707,8 @@ The partial differential equations governing both the seismic tomography experim
 
 \subsection{Imaging: seismic borehole tomography}
  Borehole seismic tomography  measures the travel time of an acoustic wave traveling between sources $n_s$ and receivers $n_r$. Travel times are given by integrating the slowness  $m(t,\vx)$  or inverse acoustic velocity of the media  along a linear ray path $\Gamma$,
-\begin{equation}\label{eq:tomo}
+\begin{equation}
+\label{eq:tomo}
 \bfd_{j,k}(t) =  \int\limits_{\Gamma_{j,k}} m(t,\vx)\, d\ell.
 \end{equation}
  Assuming the data are noisy and measured at times $(t_0,...t_n)$ the tomography problem is given by 
