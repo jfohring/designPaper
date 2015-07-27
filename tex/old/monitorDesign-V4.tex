@@ -890,37 +890,37 @@ For the noiseless case, data were simulated by marching  the initial tracer conc
 The initial design for time point $t_0$ did not include the dynamics. This amounts to  setting $\bftau_0 = 1$ everywhere. The design optimization problem in this case is  identical to the static case and produces an optimal design based only on the physics and information from the linear regularization operator $\bfL$. This is apparent in both the plot of the weights for experiment 1 at time  $t_0$ in figure \ref{fig:weights1} and the image of the rays in figure \ref{fig:results1}, where the design specifies fewer rays that cover the entire domain. 
 
 For each experiment the amse was plotted versus the number of nonzero weights for a set of regularization parameters $\beta$, see figure \ref{fig:weights1} for examples for times $t_0,t_2,t_4$. From these curves, the best set of weights were chosen such that the weights were sparse, but also so the amse was kept reasonably small. 
-%\begin{figure}[!h]
-%	\renewcommand{\arraystretch}{1.5}
-%	\begin{center}
-%		\iwidth=80mm
-%		\begin{tabular}{|c|c|c|} %{@{}|@{\ }p{3mm}@{}|@{\ }c@{\;}|@{\;}c@{\ }|}
-%			\hline		
-%			Exp & Sparsity & Weights	\\
-%			\hline	
-%			$t_0$
-%			&	
-%			\includegraphics[width=.8\iwidth]{figures/newFigs/exp1paretoWeights}
-%			&
-%			\includegraphics[width=.8\iwidth]{figures/newFigs/exp1Weights}\\
-%			\hline
-%			$t_2$
-%			&	
-%			\includegraphics[width=.8\iwidth]{figures/newFigs/exp3paretoWeights}
-%			&
-%			\includegraphics[width=.8\iwidth]{figures/newFigs/exp3Weights}\\
-%			\hline
-%			$t_4$
-%			&	
-%			\includegraphics[width=.8\iwidth]{figures/newFigs/exp5paretoWeights}
-%			&
-%			\includegraphics[width=.8\iwidth]{figures/newFigs/exp5Weights}\\			
-%			\hline
-%		\end{tabular}
-%	\end{center}
-%	\caption{Noiseless dynamics: Plots of the amse  vs. the number of nonzero weights (left column), and the weights used to conduct the experiment for experiments 1,3,and 5, at times $t_0,t_2,t_4$.}
-%	\label{fig:weights1}
-%\end{figure}
+\begin{figure}[!h]
+	\renewcommand{\arraystretch}{1.5}
+	\begin{center}
+		\iwidth=80mm
+		\begin{tabular}{|c|c|c|} %{@{}|@{\ }p{3mm}@{}|@{\ }c@{\;}|@{\;}c@{\ }|}
+			\hline		
+			Exp & Sparsity & Weights	\\
+			\hline	
+			$t_0$
+			&	
+			\includegraphics[width=.8\iwidth]{figures/newFigs/exp1paretoWeights}
+			&
+			\includegraphics[width=.8\iwidth]{figures/newFigs/exp1Weights}\\
+			\hline
+			$t_2$
+			&	
+			\includegraphics[width=.8\iwidth]{figures/newFigs/exp3paretoWeights}
+			&
+			\includegraphics[width=.8\iwidth]{figures/newFigs/exp3Weights}\\
+			\hline
+			$t_4$
+			&	
+			\includegraphics[width=.8\iwidth]{figures/newFigs/exp5paretoWeights}
+			&
+			\includegraphics[width=.8\iwidth]{figures/newFigs/exp5Weights}\\			
+			\hline
+		\end{tabular}
+	\end{center}
+	\caption{Noiseless dynamics: Plots of the amse  vs. the number of nonzero weights (left column), and the weights used to conduct the experiment for experiments 1,3,and 5, at times $t_0,t_2,t_4$.}
+	\label{fig:weights1}
+\end{figure}
 
 
 \begin{figure}

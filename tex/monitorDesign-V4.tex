@@ -1,19 +1,18 @@
-%\documentclass[11pt]{article}%
-\documentclass[leqno,onefignum,onetabnum]{siamltexmm}
+\documentclass[11pt]{article}
 \usepackage{graphicx}
 \usepackage{amsmath}
-%\usepackage{fullpage}
+\usepackage{fullpage}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{latexsym}
 %\usepackage{pstricks}
-%usepackage{tikz,pgflibraryplotmarks}
-%\usepackage{algorithm}
-%\usepackage{algpseudocode}
-\usepackage[colorlinks,pdfmark,dvips]{hyperref}
-%\usepackage[nottoc,numbib]{tocbibind} 
+\usepackage{tikz,pgflibraryplotmarks}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+\usepackage[nottoc,numbib]{tocbibind} 
 \usepackage{todonotes}
-%\usepackage{natbib}
+\usepackage{natbib}
 
 \newcommand{\bfA}	{{\bf{A}}}
 \newcommand{\bfB}	{{\bf{B}}}
@@ -116,6 +115,10 @@
 \newcommand{\bfxi}		 { { \boldsymbol \xi} }
 \newcommand{\bfdelta}	 { { \boldsymbol \delta} }
 
+
+
+\newcommand{\LtL}       { \bfL^{\top}\bfL}
+
 \newcommand {\vu}  	 {{\vec {\bf  u}} }   
 \newcommand {\vuref} {\vu_{\text{ref}}}  
 \newcommand {\vq}  	 { {\vec {\bf  q}} }
@@ -123,7 +126,7 @@
 \newcommand {\vh}    { {\vec {\bf  h}} }
 \newcommand {\vx}    {\vec {\bf x}}     
 \newcommand {\bx}    {{\bf{x}}}   
-\newcommand {\zero}  {{\bf 0}}
+\newcommand {\zero}  { {\bf 0} }
 
 \renewcommand{\hf}		 {\frac12}
 \newcommand{\hx}[1]		 {{\ensuremath{h^x_{\scriptscriptstyle #1}}}}
@@ -135,10 +138,9 @@
 \newcommand{\h}		{\vec{h}}
 \newcommand{\n}		{\vec{n}}
 \newcommand{\x}		{\vec{x}}
-
 \renewcommand{\u}		{\vec{u}}
 \renewcommand{\div}	{\nabla\cdot\,}
-\newcommand{\Grad}	{\ensuremath {{\bf{ \nabla}}}}
+\newcommand{\grad}	{\ensuremath {{\bf{ \nabla}}}}
 \newcommand{\curl}	{\ensuremath{{\nabla}\times\,}}
 \newdimen\iwidth\iwidth=30mm
 \newcommand{\rottext}[1]	{\rotatebox{90}{\hbox to 30mm{\hss #1\hss}}}
@@ -159,7 +161,6 @@
 \newcommand{\bfmhat}    {{\widehat{\bfm}}}
 \newcommand{\bfdhat}    {{\widehat{\bfd}}}
 \newcommand{\bfwhat}	{\widehat{\bf w}}
-\newcommand{\LtL}       { \bfL^{\top}\bfL}
 
 \newcommand*\xbar[1]{%
   \hbox{%
@@ -176,7 +177,6 @@
 } 
 \newcommand{\mbar}	{\xbar{\bf m}}
 \newcommand{\zbar}	{\xbar{\bf z}}
-\newcommand{\ybar}	{\xbar{\bf y}}
 \newcommand{\vbar}	{\xbar{\bf v}}
 \newcommand{\wbar}	{\xbar{\bf w}}
 \newcommand{\dbar}	{\xbar{\bf d}}
@@ -184,45 +184,43 @@
 \newcommand{\Wbar}	{\xbar{\bf W}}
 \newcommand{\Tbar}	{\xbar{\bf T}}
 
-
+\newcommand{\diag}	{\sf diag}
 \def\kronecker{\raisebox{1pt}{\ensuremath{\:\otimes\:}}} 
 
-\title{ Adaptive A-optimal experimental design for linear dynamical systems}
-
-\author{J. Fohring and E. Haber }
 
 
-% ------------------------- Begin Document ------------------------------------------
+
+
+
+
+
+
+
+
+\sloppy
+
+
+
 \begin{document}
+
+\title{ Adaptive A-optimal experimental design for linear dynamical systems}
+\author{J. Fohring and E. Haber }
 \maketitle
-\newcommand{\slugmaster}{%
-\slugger{juq}{2015}{xx}{x}{xx}}%slugger should be set to juq, siads, sifin, or siims
-
-
-
 
 
 \begin{abstract}
-While optimal experimental design for static linear ill-posed inverse problems has been well studied, there is little in the way of experimental design methods for dynamical systems. In particular, there are no methods which include historic data in the design optimization problem such that the designs adapt with the governing dynamics of the system. 
-Thus, we propose an adaptive design method which includes both the governing dynamical equations and historic data in the optimal experimental design problem.
- In the tradition of  A-optimal design our method  minimizes the adapted mean square error (amse) of the regularized model estimate, defined by introducing a monitor function which scales the mean squared error according to historic model estimates. 
+While optimal experimental design for static linear inverse problems has been well studied, there is little in the way of experimental design methods for dynamical systems. 
+In particular, problems where historic data is included in the optimal design problem, such that the experiment tracks the motion of the model. 
+Thus, we propose an adaptive design method which minimizes the adapted mean square error (amse) of the regularized model estimate, defined by introducing a monitor function which scales the mean squared error according to historic model estimates. 
 
 We present the adaptive design method for two model estimation formulations based on the classification of the error in the dynamic process. 
 First, we consider the case where there is no error in the dynamical system and formulate the inverse problem as a PDE constrained optimization problem to recover the initial condition. 
 And secondly, we include the error in the dynamics and formulate the inverse problem as a Kalman smoothing system to recover models for all times. 
 
-The adaptive design method is demonstrated with a borehole seismic tomography experiment to image tracer flow in the subsurface, where the motion of the tracer is governed by  advection in a constant velocity field. The example shows that we are able to recover optimal designs which track the motion of the tracer for both the noiseless and noisy formulations. 
+We demonstrate our approach with A-optimal design criteria  for a borehole seismic tomography experiment, where the motion of the  model is governed by  advection in a constant velocity field, and show that we are able to recover optimal designs which track the motion of the model. 
+
+
 \end{abstract}
-
-
-\begin{keywords}experimental design, dynamical systems, Kalman filter, sparsity control 
-\end{keywords}
-
-\begin{AMS}\end{AMS}
-
-\pagestyle{myheadings}
-\thispagestyle{plain}
-%\markboth{TEX PRODUCTION}{USING SIAM'S MM \LaTeX\ MACROS}
 
 
 \section{Introduction}
@@ -239,19 +237,23 @@ solving partial differential
 equations, one often uses a-priori estimates in order to solve the problem on one mesh 
 and then refines the mesh in order to obtain a more accurate solution \cite{MultiGrid}. The posterior estimate thus contributes to the decision as to where to refine the mesh. In our case we apply a similar logic to influence the design algorithm in such a way that we use solutions from earlier times to obtain a better optimal design at later times. 
 
+
 There are several considerations to be made when developing an optimal experimental design method. One such item is what exactly is meant by an ``optimal experiment''? In our context we refer to the problem of determining  the optimal placement of sensors to infer model parameters  through the inversion of  data. 
  Although there are several design criteria for such inverse problems,  we focus on A-optimal design in our work.
  Generalization to other design criteria is straight forward. 
  The A-optimal design method minimizes the mean squared error (MSE) of the model estimator, which, for linear inverse problems, is equivalent to the minimization of  the trace of the posterior covariance matrix (from the Bayesian perspective). Our work  builds on A-optimal design algorithms presented in \cite{Haber2011} for large-scale ill-posed inverse problems, and on work presented in \cite{Fohring2014} where historical data was used
  to recover the properties of a dynamic system. 
- 
+
 There are two main paradigms when considering dynamic systems in the context of an inverse problem. In the
 first, the dynamics are ``exact'', that is, we assume that the dynamic system does not contain errors and that we can make some indirect measurements of the dynamic process. In this case,
 the goal is to evaluate the parameters of the dynamic system, and the initial conditions (see \cite{Fohring2014}). 
 A second approach  is
 to consider errors in the dynamic system that are modeled as random errors. This leads to 
 Kalman filtering or smoothing (see \cite{kalman1960,Aravkin2010} and references therein) depending on the application.
-We address the experimental design for  both cases in this work. 
+ We address the experimental design for  both cases in this work. 
+
+\bigskip
+
 
 The paper is outlined as follows. In Section \ref{sec: Adaptive} we review the A-optimal experimental design
 criteria and show its shortcomings when dealing with adaptive design.  We then present a new
@@ -261,8 +263,12 @@ to the case where the model parameters are governed by a dynamical system. We in
 Section \ref{sec:Opt}  outlines the numerical optimization method for solving the design problems, and finally in section \ref{sec: Example1} we present a small model problem used to test the adaptive design method. In sections \ref{sec:Results} and \ref{sec: Example2} the results are presented for the two cases of the dynamics. 
 
 
-\section{ Adaptive experimental design}
-\label{sec: Adaptive}To understand the adaptive experimental design method we begin by reviewing the derivation of A-optimal design criteria from first principals, considering only two measurement vectors  of the form
+
+
+\section{ Adaptive experimental design }
+\label{sec: Adaptive}
+To understand the adaptive experimental design method we  begin by reviewing the derivation of A-optimal
+ design criteria from first principals, considering only two measurement vectors  of the form
 \begin{align}
 \label{data}
 \bfF_{1} \bfm + \bfepsilon_1 = \bfd_{1}\quad {\rm and} \quad \bfF_{2} \bfm + \bfepsilon_2 = \bfd_{2}
@@ -314,13 +320,13 @@ the error in the recovery as
  -\bfm.
 \end{align}
 Collecting terms and using the definition of $\bfC$ we obtain
-\begin{align*}
+\begin{align}
 \label{diffmod}
 \bfmhat_1 -\bfm = \bfC^{-1} \bfF_{1}^{\top} \bfW_{1} \bfepsilon_1 + \alpha \bfC^{-1} \LtL (\bfmhat_{0} - \bfm).
-\end{align*}
+\end{align}
 Squaring and taking the expectation over $\bfepsilon_1$ and recalling that $ \bfepsilon_1 \sim N(\zero,\bfW_{1}^{-1})$, we obtain that the mean square error is
 \begin{align}
-{\sf mse}(\bfw_1,\bfm) = \bfE\| \bfmhat_1 -\bfm \|^{2}_2 = {\sf trace}[   \bfF_{1} \bfC^{-2} \bfF_{1}^{\top} \bfW_{1}]  + 
+{\sf mse}(\bfw,\bfm) = \bfE\| \bfmhat_1 -\bfm \|^{2}_2 = {\sf trace}[   \bfF_{1} \bfC^{-2} \bfF_{1}^{\top} \bfW_{1}]  + 
 \alpha^2 \bfE\| \bfC^{-1} \LtL (\bfmhat_{0} - \bfm) \|^{2}_2.
 \end{align}
 If we further assume that $\bfm-\bfmhat_{0}$ is Gaussian with a zero mean and a covariance
@@ -350,10 +356,14 @@ previous work we proposed to minimize the function
 \end{align}
 which balances the minimization of the mse and the cost of the experiment \cite{Haber2008}.
 
+
+\bigskip
+
 Consider now using the design problem of estimating $\bfm$ given the estimated model $\widehat \bfm_{1}$.
 One could rewrite the recovery problem in a similar way,
 that is
 \begin{align}
+\label{mest2}
 \bfmhat_{2} = {\rm arg}\min\ \hf \| \bfF_{1} \bfm - \bfd_{1}\|^{2}_{\bfW_{1}} + \hf \| \bfF_{2} \bfm - \bfd_{2}\|^{2}_{\bfW_{2}}  + {\frac {\alpha} 2}
 \|\bfL (\bfm -\bfmhat_{0}) \|^{2}_2. 
 \end{align}
@@ -373,6 +383,8 @@ the function
 \alpha \LtL)^{-1} \right] + \beta \sum \bfw_{2}\quad \quad 0 \le \bfw_i . 
 \end{align}
 
+\bigskip
+
 At this point it is worth  pausing for a moment and noting an important feature of the experimental design criteria. 
  The design criteria does not depend on the data. This observation is true for any of the 
  design criteria  (that is, C,D and E designs). 
@@ -380,6 +392,9 @@ At this point it is worth  pausing for a moment and noting an important feature 
  yields a covariance matrix that is independent of $\bfd_{1}$.
  This implies that using current design criteria we are unable to
  use the estimated model obtained at time $t_{1}$  to obtain a better estimate at time $t_{2}$.
+
+\bigskip
+
 
 In order to use the information obtained at time $t_{1}$ for the design of the experiment at time $t_{2}$
  we now present the concept of {\em adaptive design}.
@@ -425,6 +440,8 @@ over the {\sf amse} is
 \end{align}
 Similar to the non-adaptive case, the adaptive design is obtained by minimizing the (penalized) 
 function $\phi_{2}(\bfw_{2})$.
+
+\bigskip
 
 The above concept can  easily be extended to any number of time steps.
 Consider $k-1$ experiments that are conducted at times $t_1,..t_{k-1}$ using
@@ -489,7 +506,7 @@ Given the assumption that there is no error, the estimation of the initial model
 \label{m0NoNoise}
 \bfmhat_{0,k} ={\rm argmin } \;\; \hf  \sum_{j=1}^{k}\| \bfF_{j}\bfm_0 - \bfd_j \|_{\bfW_j}^2 + \frac{\alpha}{2}\|\bfL(\bfm_0 - \bfmhat_{0})\|_2^2.
 \end{equation}
-and therefore the design function is identical to equation \eqref{amsek}
+and therefore the design function is identical to \ref{amsek}
 \begin{align}
 \phi_{k}^{\beta}(\bfw_{k}) =  {\sf trace} \left[  {\sf diag}(\bftau_{k-1}) \Big(\sum_{j=1}^{k}\bfF_{j}^{\top}\bfW_{j}\bfF_{j}   +
 \alpha \LtL\Big)^{-1} \right] + \beta \sum \bfw_{k},\quad \quad 0 \le \bfw_i.
@@ -565,20 +582,17 @@ In order to apply the amse method we formulate the problem as in Kalman smoothin
 \left(\begin{array}{ccc}\bfQ^{-1}_1 &  \\ & \ddots  \\ & &\bfQ^{-1}_k \end{array}\right)^{\hf}
 \left( \begin{array}{cccc} -\bfT & \bfI &   \\  & \ddots & \ddots\\ & &   -\bfT & \bfI  \end{array}\right)
 \left(\begin{array}{c}  \bfm_0  \\ \vdots \\ \bfm_k \end{array}\right)\Bigg\|^2_2\\
-\nonumber
  + & \;{\frac \alpha 2}\Bigg\|
 \left(\begin{array}{ccc}\bfL &  \\ & \ddots  \\ & &\bfL\end{array}\right)
 \left(\begin{array}{c}  \bfm_0  \\ \vdots \\ \bfm_k \end{array}\right)\Bigg\|^2_2. 
 \end{align}
 
-
 Defining the transport matrix $\Tbar$ for all times as
 \begin{equation*}
 \Tbar = \left( \begin{array}{cccc} -\bfT & \bfI &   \\  & \ddots & \ddots\\ & &   -\bfT & \bfI  \end{array}\right),
 \end{equation*}
- the matrices $\Wbar_k = {\sf diag}(\bfw_0,\hdots,\bfw_k)$,
-and $ \Qbar^{-1}_k = {\sf blkdiag}(\bfQ^{-1}_1,\hdots,\bfQ^{-1}_k)$, and the vectors $\widehat{\mbar}_k = (\bfmhat_0^{\top}, \hdots, \bfmhat_k^{\top})^{\top}$, and $\mbar_k = (\bfm_0^{\top}, \hdots, \bfm_k^{\top})^{\top}$,   
-allows us to write the estimation of  $\bfm, \forall \; k$ in compact form as
+and  $\widehat{\mbar}_k = (\bfmhat_0^{\top}, \hdots, \bfmhat_k^{\top})^{\top}$, $\mbar_k = (\bfm_0^{\top}, \hdots, \bfm_k^{\top})^{\top}$, $\Wbar_k = {\sf diag}(\bfw_0,\hdots,\bfw_k)$, and $ \Qbar^{-1}_k = {\sf blkdiag}(\bfQ^{-1}_1,\hdots,\bfQ^{-1}_k)$  
+allows us to write the estimation of  $\bfm, \forall \;\; k$ in compact form as
 \begin{equation}
 \label{noisymk}
 \widehat{\mbar}_k = {\rm argmin } \;\;\hf \left\| \left((\bfI \kronecker \bfF)\mbar_k - \dbar_k\right)\right\|^2_{\Wbar_k} + \hf\left\|
@@ -595,7 +609,7 @@ the amse design optimization function for a design at time $t_k$ is then
 &\;{\sf trace}\left[ {\sf diag}(\bar{\bftau}_{k}) \left((\bfI \kronecker \bfF)^{\top}\Wbar_k(\bfI \kronecker \bfF)  +
 \Tbar^{\top}\Qbar^{-1}_k\Tbar + \alpha \bfI \kronecker(\LtL)
 \right)^{-1}\right] + \beta \sum \bfw_i,  \\
- &0 \leq \bfw_i,
+ &0 \leq \bfw_i.
 \end{align}
 where $\bar{\bftau}_{k} = \left(\bftau_0(\bfmhat_0), \hdots, \bftau_k(\bfT\bfmhat_{k-1})\right)$. 
 
@@ -603,6 +617,7 @@ Note that we assume that we are at time $t_{k-1}$ and that experiments $1,\ldots
 Therefore, we are only solving for $\bfw_k$. At this point,  $\bfmhat_k$ is not known. 
 To predict $\bfmhat_k$ at time $t_k$ we simply propagate the previous estimator ahead in time, $\bfmhat_k \approx \bfT\bfmhat_{k-1}$. 
 
+\bigskip
 
 The two formulations of the adaptive design method for a dynamical system, yield two different numerical optimization problems. We discuss numerical optimization techniques for the solution of these problems in the following section.
 
@@ -614,7 +629,7 @@ The two formulations of the adaptive design method for a dynamical system, yield
 \label{sec:Opt}
 In this section we present the calculation of the gradients required to solve the design optimization problems for both the noiseless and noisy dynamics. 
 \subsection{Noiseless dynamics}
-Finding an optimal design for  time step $k$ requires the minimization of the objective functional \eqref{amsek}, which involves computing the trace of a large dense matrix. To avoid such an expensive calculation, we use the stochastic Hutchinson trace estimator to approximate the trace. Applying the trace estimator, equation \eqref{amsek} becomes
+Finding an optimal design for  time step $k$ requires the minimization of the objective functional \eqref{amsek}, which involves computing the trace of a large dense matrix. To avoid such an expensive calculation, we use the stochastic Hutchinson trace estimator to approximate the trace. Applying the trace estimator, Equation \eqref{amsek} becomes
 \begin{equation*}
 \phi_k^{\beta}(\bfw_k) = \bfv^{\top}{\sf diag}(\bftau) \Big(\bfF_k^{\top}\bfW_k\bfF_k   + \bfG \Big)^{-1}\bfv + \beta\bfe^{\top}\bfw_k,
 \end{equation*}
@@ -630,7 +645,7 @@ This computation is easily carried out by defining $\bfz$ such that
 \end{equation}
   recalling that $\bfW_k = {\sf diag}(\bfw_k)$, and differentiating implicitly to obtain that
 \begin{equation*}
-\bfF_k^{\top}{\sf diag}(\bfF_k\bfz) + \bfF_k^{\top}{\sf diag}(\bfw_k)\bfF_k +\bfG)\Grad_{\bfw_k}\bfz =\zero.
+\bfF_k^{\top}{\sf diag}(\bfF_k\bfz) + \bfF_k^{\top}{\sf diag}(\bfw_k)\bfF_k +\bfG)\grad_{\bfw_k}\bfz =\zero.
 \end{equation*}
 Solving for the gradient of $\bfz$ we have,
 \begin{equation*}
@@ -689,7 +704,7 @@ Substituting the gradient of $\zbar $ back into the gradient of the noisy design
 
 To solve the system for $\zbar$ and for
 \begin{equation}
-\ybar = \left((\bfI \kronecker \bfF)^{\top}\Wbar_k(\bfI \kronecker \bfF)  +
+\bfy = \left((\bfI \kronecker \bfF)^{\top}\Wbar_k(\bfI \kronecker \bfF)  +
 \Tbar^{\top}\Qbar^{-1}_k\Tbar + \alpha \bfI \kronecker(\LtL)
 \right)^{- \top}(\bar{\bftau} \odot \bar{\bfv}) 
 \end{equation}
@@ -697,7 +712,7 @@ the preconditioned conjugate gradient method was used
 to avoid forming a the large matrix. We again used a steepest descent method for the non-linear design optimization. 
 
 
-\section{Numerical examples}
+\section{Numerical Examples }
 \label{sec: Example1}
 We illustrate the adaptive  design method  with a toy problem designed to fully demonstrate the ability of our method to track  motion and areas of interest in the model. The toy  example consists of a  circular volume of tracer  moving vertically in a whole space. The dynamics governing the motion of the tracer are described by a simple tracer  advection model. 
 To image the tracer we chose a   borehole seismic tomography survey.
@@ -707,8 +722,7 @@ The partial differential equations governing both the seismic tomography experim
 
 \subsection{Imaging: seismic borehole tomography}
  Borehole seismic tomography  measures the travel time of an acoustic wave traveling between sources $n_s$ and receivers $n_r$. Travel times are given by integrating the slowness  $m(t,\vx)$  or inverse acoustic velocity of the media  along a linear ray path $\Gamma$,
-\begin{equation}
-\label{eq:tomo}
+\begin{equation}\label{eq:tomo}
 \bfd_{j,k}(t) =  \int\limits_{\Gamma_{j,k}} m(t,\vx)\, d\ell.
 \end{equation}
  Assuming the data are noisy and measured at times $(t_0,...t_n)$ the tomography problem is given by 
@@ -726,7 +740,7 @@ Here $\bfF$ is a discretization of the ray paths. Note that we assume many ray p
 The initial survey setup is pictured in figure \ref{fig:surveyDesign}, and includes 2 boreholes with 20 sources in the east borehole and  30 receivers in the west borehole. The initial design was chosen to overly cover all the area in the flow domain, with the goal of significantly reducing the number of data required to image the moving model. 
 
 
-\subsection{Dynamics: tracer advection} 
+\subsection{Dynamics: Tracer advection} 
  The subsurface dynamics are described by the  tracer advection equations as presented in \cite{Chen2006}, which characterize  the transport of a solute in a fully saturated porous media, 
 \begin{subequations}
 %\label{floweq}
@@ -748,7 +762,7 @@ The initial survey setup is pictured in figure \ref{fig:surveyDesign}, and inclu
 \end{subequations}
  with either Dirichlet or Neumann boundary conditions on the pressure $p$.\\
  
-With the goal being to image the motion of the tracer, $c(t,\vx)$, we assume that changes in $c$ amount to changes in geophysical properties. This implies that $m(c)$ exists and is linear, and that the motion of $m$ is governed by equation \eqref{eq:flow}~\cite{Fohring2014}. From  now on we will refer only to $m$ assuming that there is a direct relation between $m$ and $c$. 
+With the goal being to image the motion of the tracer, $c(t,\vx)$, we assume that changes in $c$ amount to changes in geophysical properties. This implies that $m(c)$ exists and is linear, and that the motion of $m$ is governed by Equation \eqref{eq:flow}~\cite{Fohring2014}. From  now on we will refer only to $m$ assuming that there is a direct relation between $m$ and $c$. 
 
 A particle in cell discretization \cite{Edwards2012} was chosen to discretize the advection of the tracer, such that equation \eqref{eq:flow} is
 \begin{equation*}
@@ -826,7 +840,7 @@ Second, a non-linear inversion was performed with smoothed total variation (TV) 
 
 In continuous space, smoothed total variation is described by the following relation,
 \begin{equation}
-		R(m) = \alpha \int  \phi(|\nabla m|) \ d\vx.
+		R(m) = \alpha \int  \phi(|\grad m|) \ d\vx.
 \end{equation} 
 where the convex function $\phi(c) = \sqrt{c^2 + \epsilon}$, is an approximation to the $\ell_1$ norm. 
 
@@ -868,7 +882,7 @@ To design only for the tracer motion, we define delta as $\bfdelta = |\bfm_{k} -
 %\end{equation*}
 where the background model $\bfm_{\text{background}} $, is the model used to compute the velocity field in equation \eqref{eq:flowu}.
 
-\section{Design results: noiseless dynamics}
+\section{Design results: Noiseless dynamics}
 \label{sec:Results}
 For the noiseless case, data were simulated by marching  the initial tracer concentration along in time, for time steps of 25 days and measured by conducting a tomography survey at each time with 4\% Gaussian noise added to each data set. In total 9 experiments were conducted for times $t_0,t_1,...,t_8$. 
 
@@ -879,28 +893,28 @@ For each experiment the amse was plotted versus the number of nonzero weights fo
 %\begin{figure}[!h]
 %	\renewcommand{\arraystretch}{1.5}
 %	\begin{center}
-%		\iwidth=80mm
+%		\iwidth=90mm
 %		\begin{tabular}{|c|c|c|} %{@{}|@{\ }p{3mm}@{}|@{\ }c@{\;}|@{\;}c@{\ }|}
 %			\hline		
-%			Exp & Sparsity & Weights	\\
+%			exp & sparsity & weights	\\
 %			\hline	
-%			$t_0$
+%			$1$
 %			&	
-%			\includegraphics[width=.8\iwidth]{figures/newFigs/exp1paretoWeights}
+%			\includegraphics[width=.65\iwidth]{figures/newFigs/exp1paretoWeights}
 %			&
-%			\includegraphics[width=.8\iwidth]{figures/newFigs/exp1Weights}\\
+%			\includegraphics[width=.65\iwidth]{figures/newFigs/exp1Weights}\\
 %			\hline
-%			$t_2$
+%			$3$
 %			&	
-%			\includegraphics[width=.8\iwidth]{figures/newFigs/exp3paretoWeights}
+%			\includegraphics[width=.65\iwidth]{figures/newFigs/exp3paretoWeights}
 %			&
-%			\includegraphics[width=.8\iwidth]{figures/newFigs/exp3Weights}\\
+%			\includegraphics[width=.65\iwidth]{figures/newFigs/exp3Weights}\\
 %			\hline
-%			$t_4$
+%			$5$
 %			&	
-%			\includegraphics[width=.8\iwidth]{figures/newFigs/exp5paretoWeights}
+%			\includegraphics[width=.65\iwidth]{figures/newFigs/exp5paretoWeights}
 %			&
-%			\includegraphics[width=.8\iwidth]{figures/newFigs/exp5Weights}\\			
+%			\includegraphics[width=.65\iwidth]{figures/newFigs/exp5Weights}\\			
 %			\hline
 %		\end{tabular}
 %	\end{center}
@@ -912,7 +926,7 @@ For each experiment the amse was plotted versus the number of nonzero weights fo
 \begin{figure}
 	\renewcommand{\arraystretch}{1.5}
 	\begin{center}
-		\iwidth=140mm
+		\iwidth=130mm
 					\includegraphics[width=1\iwidth]{figures/risk2}
 	\end{center}
 	\caption{Noiseless dynamics: Plots of the amse  vs. the number of nonzero weights (left column), and the weights used to conduct the experiment for experiments 1, 3, and 5, at times $t_0,\; t_2,\; t_4$.}
@@ -925,16 +939,16 @@ There are some spurious rays that do not pass through the tracer which are inclu
 It is also apparent that the number of spurious rays increases further in time even though estimates of $\bfm_0$ improve as more data are collected. In particular, at time $t_6$ it appears that the design algorithm has a harder time generating a design that captures the target well. There are many more rays which do not pass through the target. This is partially due to the increasing number of multiplications by the transport matrix $\bfT$ as time progresses, compounding errors, but also the loss of mass as the tracer exits the domain out of the sink. However, the designs still provide enough information to recover models which indicate the location of the tracer.  
 
 The reconstructions of $\bfm_k$ with smoothed total variation as the regularization are much closer to the true models, even when the optimal design was computed for the linear regularization model estimation problem. Again, this is to be expected since we have chosen a model with discontinuous edges, and are transporting the target only by advection. 
-\begin{figure}[!h]
+\begin{figure}
 	\begin{center}
-	\iwidth=155mm
+	\iwidth=170mm
 	\includegraphics[width = 1\iwidth]{figures/noiselessFigs/noiselessResults}
 	\end{center}
 	\caption{Noiseless dynamics: Optimal designs and recovered models for 9 	experiments. The top row shows the rays and the recovered model, with 		the number of rays (\#d = 350) given below, followed by the true 			models, the models recovered using total variation, and finally the 		models recovered using the linear gradient regularization.}
 	\label{fig:results1}
 \end{figure}
 
-
+%
 %\begin{figure}[!h]
 %	\renewcommand{\arraystretch}{1.5}
 %	\begin{center}
@@ -943,89 +957,89 @@ The reconstructions of $\bfm_k$ with smoothed total variation as the regularizat
 %			\hline		
 %			 exp $t_0$ & exp $t_1$ & exp $t_2$& exp $t_3$& exp $t_4$& exp $t_5$& exp $t_6$ & exp $t_7$ & exp $t_8$\\
 %			\hline		
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-1-designs}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-1-designs}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-2-designs}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-2-designs}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-3-designs}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-3-designs}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-4-designs}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-4-designs}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-5-designs}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-5-designs}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-6-designs}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-6-designs}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-7-designs}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-7-designs}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-8-designs}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-8-designs}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-9-designs}			
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-9-designs}			
 %			\\
 %			\hline
-%			$\#d=350$& $\#d=43$& $\#d=46$& $\#d= 57$& $\#d=35$& $\#d=35$& $\#d=30$& $\#d=25$& $\# d=19$\\
+%			$\#d=288$& $\#d=69$& $\#d=73$& $\#d= 61$& $\#d=77$& $\#d=55$& $\#d=76$& $\#d=61$& $\# d=35$\\
 %			\hline	
 %			 $\bfm^{\sf True}_{t_0}$& $\bfm^{\sf True}_{t_1}$&$\bfm^{\sf True}_{t_2}$& $\bfm^{\sf True}_{t_3}$&$\bfm^{\sf True}_{t_4}$& $\bfm^{\sf True}_{t_5}$ &$\bfm^{\sf True}_{t_6}$&$\bfm^{\sf True}_{t_7}$& $\bfm^{\sf True}_{t_8}$ 
 %			 \\
 %			\hline	
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-1-mtrue}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-1-mtrue}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-2-mtrue}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-2-mtrue}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-3-mtrue}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-3-mtrue}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-4-mtrue}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-4-mtrue}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-5-mtrue}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-5-mtrue}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-6-mtrue}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-6-mtrue}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-7-mtrue}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-7-mtrue}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-8-mtrue}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-8-mtrue}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-9-mtrue}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-9-mtrue}
 %			\\
 %			\hline
 %			 $\bfm^{\sf TV}_{t_0}$& $\bfm^{\sf TV}_{t_1}$&$\bfm^{\sf TV}_{t_2}$& $\bfm^{\sf TV}_{t_3}$&$\bfm^{\sf TV}_{t_4}$& $\bfm^{\sf TV}_{t_5}$ &$\bfm^{\sf TV}_{t_6}$&$\bfm^{\sf TV}_{t_7}$& $\bfm^{\sf TV}_{t_8}$ \\
 %			\hline	
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-1-mkTV}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-1-mkTV}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-2-mkTV}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-2-mkTV}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-3-mkTV}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-3-mkTV}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-4-mkTV}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-4-mkTV}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-5-mkTV}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-5-mkTV}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-6-mkTV}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-6-mkTV}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-7-mkTV}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-7-mkTV}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-8-mkTV}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-8-mkTV}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-9-mkTV}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-9-mkTV}
 %			\\
 %			\hline	
 %			 $\bfm^{\sf Lin}_{t_0}$& $\bfm^{\sf Lin}_{t_1}$&$\bfm^{\sf Lin}_{t_2}$& $\bfm^{\sf Lin}_{t_3}$&$\bfm^{\sf Lin}_{t_4}$& $\bfm^{\sf Lin}_{t_5}$ &$\bfm^{\sf Lin}_{t_6}$&$\bfm^{\sf Lin}_{t_7}$& $\bfm^{\sf Lin}_{t_8}$ \\
 %			\hline	
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-1-mk}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-1-mk}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-2-mk}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-2-mk}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-3-mk}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-3-mk}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-4-mk}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-4-mk}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-5-mk}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-5-mk}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-6-mk}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-6-mk}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-7-mk}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-7-mk}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-8-mk}
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-8-mk}
 %			&
-%			\includegraphics[width=.9\iwidth]{figures/newFigs/resultsExp-9-mk}		
+%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-9-mk}		
 %			\\			
 %			\hline
 %		\end{tabular}
@@ -1035,15 +1049,15 @@ The reconstructions of $\bfm_k$ with smoothed total variation as the regularizat
 %\end{figure}
 
 
-\section{Results: noisy  dynamics}
+\section{Results: Noisy  dynamics}
 \label{sec: Example2}
 For the first experiment $\bfw_0$, the initial naive experiment computed in the noiseless example was used in the subsequent design estimations. Each model was reconstructed at each time step after using the reduced data sets determined by the optimal design. Models were reconstructed using the non-linear smoothed total variation regularization, and also with the linear regularization. 
 The covariance matrices $\bfQ_k$ were assigned a scalar value for the variance for each time step to represent iid noise in the dynamics, such that $\bfQ_k = \sigma_k \bfI$. We assigned a constant $\sigma_k = \pm 0.2$ for all experiments. 
 
 The results are pictured in figure \ref{fig:results2}, below. It is apparent that adapted A-optimal designs were again able to track the motion of the tracer with a significantly reduced set of measurements. The recoveries for $\bfm_k$ using the linear regularization term approximate the true models to a better extent that those of the noiseless formulation. However, those recovered with the smoothed TV regularization were again used in the monitor function. 
-\begin{figure}[!h]
+\begin{figure}
 	\begin{center}
-	\iwidth=155mm
+	\iwidth=170mm
 	\includegraphics[width = 1\iwidth]{figures/newFigs/resultsAll2-new}
 	\end{center}
 	\caption{Noisey dynamics: Optimal designs and recovered models for 9 experiments. The top row shows the rays and the recovered model, with the number of rays (ex. \#d = 297) given below. The second row pictures true models, the third shows the  models recovered using total variation, and finally the bottom shows models recovered using the linear gradient regularization.}
@@ -1160,138 +1174,18 @@ To determine a design for a future experiment, we minimize the amse  with the ad
 This leads to experimental designs which track the changes in the model with a reduced set of measurements.  
 We have tested our methodology for a geophysical imaging inverse problem where the dynamics of the  model parameters are governed by advection in porous media. 
 
+\bigskip
 
-
-
-
-
-
-
+%Some thoughts on future work:
+%\begin{itemize}
+%\item How to do this for non-linear problems -linearize... approximating the mse...propagating models to generate a training set is an option, but not really anything new or different from the non-linear design ill-posed paper...
+%\item What other options for including data? What other statistics? 
+%\item 3D would be fun for a more applied problem... advection-diffusion or 2-phase flow with the full waveform seismic survey...
+%\end{itemize}
 \newpage
-\begin{thebibliography}{10}
-
-\bibitem{Ajo-Franklin2009}
-Jonathan~B. Ajo-Franklin.
-\newblock {Optimal experiment design for time-lapse traveltime tomography}.
-\newblock {\em Geophysics}, 74(4):Q27--Q40, July 2009.
-
-\bibitem{Alexanderian2014}
-Alen Alexanderian, Noemi Petra, Georg Stadler, and Omar Ghattas.
-\newblock {A-Optimal design of experiments for infinite-dimensional Bayesian
-  linear inverse problems with regularized $l_0$ - sparsification}.
-\newblock {\em SIAM Journal on Scientific Computing}, 36(5):2122--2148, 2014.
-
-\bibitem{Aravkin2010}
-Aleksandr Aravkin.
-\newblock {\em {Robust Methods for Kalman Filtering / Smoothing and Bundle
-  Adjustment}}.
-\newblock PhD thesis, 2010.
-
-\bibitem{Aravkin2013}
-A.Y. Aravkin, B.M. Bell, J.V. Burke, and G.~Pillonetto.
-\newblock Kalman smoothing and block tridiagonal systems: new connections and
-  numerical stability results.
-\newblock {\em Automatic Control, IEEE Transactions on}, 2013.
-
-\bibitem{Ascher2006}
-U.~M. Ascher, E.~Haber, and H.~Huang.
-\newblock {On Effective Methods for Implicit Piecewise Smooth Surface
-  Recovery}.
-\newblock {\em SIAM Journal on Scientific Computing}, 28(1):339--358, January
-  2006.
-
-\bibitem{Atkinson1992}
-Anthony~Curtis Atkinson and Alexander~N. Donev.
-\newblock {\em {Optimum Experimental Designs}}.
-\newblock Clarendon Press, 1992.
-
-\bibitem{Bardow2008}
-Andr\'{e} Bardow.
-\newblock {Optimal experimental design of ill-posed problems: The METER
-  approach}.
-\newblock {\em Computers \& Chemical Engineering}, 32(1-2):115--124, January
-  2008.
-
-\bibitem{MultiGrid}
-W.~Briggs, V.~Henson, and S.~McCormick.
-\newblock {\em A Multigrid Tutorial, Second Edition}.
-\newblock Society for Industrial and Applied Mathematics, second edition, 2000.
-
-\bibitem{Chaloner1995}
-Kathryn Chaloner and Isabella Verdinelli.
-\newblock {Bayesian Experimental Design : A Review}.
-\newblock {\em Statistical Science}, 10(3):273--304, 1995.
-
-\bibitem{Chen2006}
-Zhangxin Chen, Guanren Huan, and Yuanle Ma.
-\newblock {\em {Computational Methods for Multiphase Flows in Porous Media}}.
-\newblock SIAM, 2006.
-
-\bibitem{Curtis1999}
-Andrew Curtis.
-\newblock {Optimal experiment design: cross-borehole tomographic examples}.
-\newblock {\em Geophysical Journal International}, 136(3):637--650, March 1999.
-
-\bibitem{Edwards2012}
-Essex Edwards and Robert Bridson.
-\newblock {A high-order accurate particle-in-cell method}.
-\newblock {\em International Journal for Numerical Methods in Engineering},
-  90(9):1073--1088, June 2012.
-
-\bibitem{Fedorov1972}
-V.V. Fedorov.
-\newblock {\em {Theory Of Optimal Experiments}}.
-\newblock Elsevier, 1972.
-
-\bibitem{Fohring2014}
-J~Fohring, E~Haber, and L~Ruthotto.
-\newblock {Geophysical imaging of fluid flow in porous media}.
-\newblock {\em SIAM Journal on Scientific Computing}, 36(5):218--236, 2014.
-
-\bibitem{Haber2008}
-E~Haber, L~Horesh, and L~Tenorio.
-\newblock {Numerical methods for experimental design of large-scale linear
-  ill-posed inverse problems}.
-\newblock {\em Inverse Problems}, 24(5):055012, October 2008.
-
-\bibitem{Haber2010}
-E~Haber, L~Horesh, and L~Tenorio.
-\newblock {Numerical methods for the design of large-scale nonlinear discrete
-  ill-posed inverse problems}.
-\newblock {\em Inverse Problems}, 26(2):025002, February 2010.
-
-\bibitem{Haber2011}
-Eldad Haber, Zhuojun Magnant, Christian Lucero, and Luis Tenorio.
-\newblock {Numerical methods for A-optimal designs with a sparsity constraint
-  for ill-posed inverse problems}.
-\newblock {\em Computational Optimization and Applications}, 52(1):293--314,
-  April 2011.
-
-\bibitem{Hutchinson1990}
-M.F. Hutchinson.
-\newblock {A stochastic estimator of the trace of the influence matrix for
-  laplacian smoothing splines}.
-\newblock {\em Communications in Statistics - Simulation and Computation},
-  19(2):433--450, January 1990.
-
-\bibitem{kalman1960}
-R~E Kalman.
-\newblock {A New Approach to Linear Filtering and Prediction Problems 1}.
-\newblock {\em Transaction of the ASME - Journal of Basic Engineering},
-  82(Series D):35--45, 1960.
-
-\bibitem{Oliver2010a}
-Dean~S. Oliver and Yan Chen.
-\newblock {Recent progress on reservoir history matching: a review}.
-\newblock {\em Computational Geosciences}, 15(1):185--221, July 2010.
-
-\bibitem{Pukelsheim1993a}
-Friedrich Pukelsheim and William~J. Studden.
-\newblock {E-Optimal Designs for Polynomial Regression}.
-\newblock {\em The Annals of Statistics}, 21(1):402--415, March 1993.
-
-\end{thebibliography}
-
+\bibliographystyle{plain}
+\bibliography{designBib}
+%\bibliography{../../../../Biblio/biblio}
 \end{document}
 
 
