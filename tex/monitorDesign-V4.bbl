@@ -1,0 +1,123 @@
+\begin{thebibliography}{10}
+
+\bibitem{Ajo-Franklin2009}
+Jonathan~B. Ajo-Franklin.
+\newblock {Optimal experiment design for time-lapse traveltime tomography}.
+\newblock {\em Geophysics}, 74(4):Q27--Q40, July 2009.
+
+\bibitem{Alexanderian2014}
+Alen Alexanderian, Noemi Petra, Georg Stadler, and Omar Ghattas.
+\newblock {A-Optimal design of experiments for infinite-dimensional Bayesian
+  linear inverse problems with regularized $l_0$ - sparsification}.
+\newblock {\em SIAM Journal on Scientific Computing}, 36(5):2122--2148, 2014.
+
+\bibitem{Aravkin2010}
+Aleksandr Aravkin.
+\newblock {\em {Robust Methods for Kalman Filtering / Smoothing and Bundle
+  Adjustment}}.
+\newblock PhD thesis, 2010.
+
+\bibitem{Aravkin2013}
+A.Y. Aravkin, B.M. Bell, J.V. Burke, and G.~Pillonetto.
+\newblock Kalman smoothing and block tridiagonal systems: new connections and
+  numerical stability results.
+\newblock {\em Automatic Control, IEEE Transactions on}, 2013.
+
+\bibitem{Ascher2006}
+U.~M. Ascher, E.~Haber, and H.~Huang.
+\newblock {On Effective Methods for Implicit Piecewise Smooth Surface
+  Recovery}.
+\newblock {\em SIAM Journal on Scientific Computing}, 28(1):339--358, January
+  2006.
+
+\bibitem{Atkinson1992}
+Anthony~Curtis Atkinson and Alexander~N. Donev.
+\newblock {\em {Optimum Experimental Designs}}.
+\newblock Clarendon Press, 1992.
+
+\bibitem{Bardow2008}
+Andr\'{e} Bardow.
+\newblock {Optimal experimental design of ill-posed problems: The METER
+  approach}.
+\newblock {\em Computers \& Chemical Engineering}, 32(1-2):115--124, January
+  2008.
+
+\bibitem{MultiGrid}
+W.~Briggs, V.~Henson, and S.~McCormick.
+\newblock {\em A Multigrid Tutorial, Second Edition}.
+\newblock Society for Industrial and Applied Mathematics, second edition, 2000.
+
+\bibitem{Chaloner1995}
+Kathryn Chaloner and Isabella Verdinelli.
+\newblock {Bayesian Experimental Design : A Review}.
+\newblock {\em Statistical Science}, 10(3):273--304, 1995.
+
+\bibitem{Chen2006}
+Zhangxin Chen, Guanren Huan, and Yuanle Ma.
+\newblock {\em {Computational Methods for Multiphase Flows in Porous Media}}.
+\newblock SIAM, 2006.
+
+\bibitem{Curtis1999}
+Andrew Curtis.
+\newblock {Optimal experiment design: cross-borehole tomographic examples}.
+\newblock {\em Geophysical Journal International}, 136(3):637--650, March 1999.
+
+\bibitem{Edwards2012}
+Essex Edwards and Robert Bridson.
+\newblock {A high-order accurate particle-in-cell method}.
+\newblock {\em International Journal for Numerical Methods in Engineering},
+  90(9):1073--1088, June 2012.
+
+\bibitem{Fedorov1972}
+V.V. Fedorov.
+\newblock {\em {Theory Of Optimal Experiments}}.
+\newblock Elsevier, 1972.
+
+\bibitem{Fohring2014}
+J~Fohring, E~Haber, and L~Ruthotto.
+\newblock {Geophysical imaging of fluid flow in porous media}.
+\newblock {\em SIAM Journal on Scientific Computing}, 36(5):218--236, 2014.
+
+\bibitem{Haber2008}
+E~Haber, L~Horesh, and L~Tenorio.
+\newblock {Numerical methods for experimental design of large-scale linear
+  ill-posed inverse problems}.
+\newblock {\em Inverse Problems}, 24(5):055012, October 2008.
+
+\bibitem{Haber2010}
+E~Haber, L~Horesh, and L~Tenorio.
+\newblock {Numerical methods for the design of large-scale nonlinear discrete
+  ill-posed inverse problems}.
+\newblock {\em Inverse Problems}, 26(2):025002, February 2010.
+
+\bibitem{Haber2011}
+Eldad Haber, Zhuojun Magnant, Christian Lucero, and Luis Tenorio.
+\newblock {Numerical methods for A-optimal designs with a sparsity constraint
+  for ill-posed inverse problems}.
+\newblock {\em Computational Optimization and Applications}, 52(1):293--314,
+  April 2011.
+
+\bibitem{Hutchinson1990}
+M.F. Hutchinson.
+\newblock {A stochastic estimator of the trace of the influence matrix for
+  laplacian smoothing splines}.
+\newblock {\em Communications in Statistics - Simulation and Computation},
+  19(2):433--450, January 1990.
+
+\bibitem{kalman1960}
+R~E Kalman.
+\newblock {A New Approach to Linear Filtering and Prediction Problems 1}.
+\newblock {\em Transaction of the ASME - Journal of Basic Engineering},
+  82(Series D):35--45, 1960.
+
+\bibitem{Oliver2010a}
+Dean~S. Oliver and Yan Chen.
+\newblock {Recent progress on reservoir history matching: a review}.
+\newblock {\em Computational Geosciences}, 15(1):185--221, July 2010.
+
+\bibitem{Pukelsheim1993a}
+Friedrich Pukelsheim and William~J. Studden.
+\newblock {E-Optimal Designs for Polynomial Regression}.
+\newblock {\em The Annals of Statistics}, 21(1):402--415, March 1993.
+
+\end{thebibliography}

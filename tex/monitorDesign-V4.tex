@@ -6,7 +6,7 @@
 \usepackage{amsfonts}
 \usepackage{latexsym}
 %\usepackage{pstricks}
-\usepackage{tikz,pgflibraryplotmarks}
+%\usepackage{tikz,pgflibraryplotmarks}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{hyperref}
@@ -14,189 +14,9 @@
 \usepackage{todonotes}
 \usepackage{natbib}
 
-\newcommand{\bfA}	{{\bf{A}}}
-\newcommand{\bfB}	{{\bf{B}}}
-\newcommand{\bfC}	{{\bf{C}}}
-\newcommand{\bfD}	{{\bf{D}}}
-\newcommand{\bfE}	{{\bf{E}}}
-\newcommand{\bfF}	{{\bf{F}}}
-\newcommand{\bfG}	{{\bf{G}}}
-\newcommand{\bfH}	{{\bf{H}}}
-\newcommand{\bfI}	{{\bf{I}}}
-\newcommand{\bfJ}	{{\bf{J}}}
-\newcommand{\bfK}	{{\bf{K}}}
-\newcommand{\bfL}	{{\bf{L}}}
-\newcommand{\bfM}	{{\bf{M}}}
-\newcommand{\bfN}	{{\bf{N}}}
-\newcommand{\bfO}	{{\bf{O}}}
-\newcommand{\bfP}	{{\bf{P}}}
-\newcommand{\bfQ}	{{\bf{Q}}}
-\newcommand{\bfR}	{{\bf{R}}}
-\newcommand{\bfS}	{{\bf{S}}}
-\newcommand{\bfT}	{{\bf{T}}}
-\newcommand{\bfU}	{{\bf{U}}}
-\newcommand{\bfV}	{{\bf{V}}}
-\newcommand{\bfW}	{{\bf{W}}}
-\newcommand{\bfX}	{{\bf{X}}}
-\newcommand{\bfY}	{{\bf{Y}}}
-\newcommand{\bfZ}	{{\bf{Z}}}
-
-\newcommand{\bfa}	{{\bf{a}}}
-\newcommand{\bfb}	{{\bf{b}}}
-\newcommand{\bfc}	{{\bf{c}}}
-\newcommand{\bfd}	{{\bf{d}}}
-\newcommand{\bfe}	{{\bf{e}}}
-\newcommand{\bff}	{{\bf{f}}}
-\newcommand{\bfg}	{{\bf{g}}}
-\newcommand{\bfh}	{{\bf{h}}}
-\newcommand{\bfi}	{{\bf{i}}}
-\newcommand{\bfj}	{{\bf{j}}}
-\newcommand{\bfk}	{{\bf{k}}}
-\newcommand{\bfl}	{{\bf{l}}}
-\newcommand{\bfm}	{{\bf{m}}}
-\newcommand{\bfn}	{{\bf{n}}}
-\newcommand{\bfo}	{{\bf{o}}}
-\newcommand{\bfp}	{{\bf{p}}}
-\newcommand{\bfq}	{{\bf{q}}}
-\newcommand{\bfr}	{{\bf{r}}}
-\newcommand{\bfs}	{{\bf{s}}}
-\newcommand{\bft}	{{\bf{t}}}
-\newcommand{\bfu}	{{\bf{u}}}
-\newcommand{\bfv}	{{\bf{v}}}
-\newcommand{\bfw}	{{\bf{w}}}
-\newcommand{\bfx}	{{\bf{x}}}
-\newcommand{\bfy}	{{\bf{y}}}
-\newcommand{\bfz}	{{\bf{z}}}
-
-\newcommand{\A}		{\vec{A}}
-\newcommand{\B}		{\vec{B}}
-\newcommand{\C}		{\vec{C}}
-\newcommand{\D}		{\vec{D}}
-\newcommand{\E}		{\vec{E}}
-\newcommand{\F}		{\vec{F}}
-\newcommand{\G}		{\vec{G}}
-\renewcommand{\H}	{\vec{H}}
-\newcommand{\I}		{\vec{I}}
-\newcommand{\J}		{\vec{J}}
-\newcommand{\K}		{\vec{K}}
-\renewcommand{\L}	{\vec{L}}
-\newcommand{\M}		{\vec{M}}
-\newcommand{\N}		{\vec{N}}
-\renewcommand{\O}	{\vec{O}}
-\renewcommand{\P}	{\vec{P}}
-\newcommand{\Q}		{\vec{Q}}
-\newcommand{\R}		{\vec{R}}
-\renewcommand{\S}	{\vec{S}}
-\newcommand{\T}		{\vec{T}}
-\newcommand{\U}		{\vec{U}}
-\newcommand{\V}		{\vec{V}}
-\newcommand{\W}		{\vec{W}}
-\newcommand{\X}		{\vec{X}}
-\newcommand{\Y}		{\vec{Y}}
-\newcommand{\Z}		{\vec{Z}}
-
-\newcommand{\hf}        {{\frac 12}}
-\newcommand{\bfepsilon} {{\boldsymbol \epsilon}}
-\newcommand{\bfsigma}   {{\boldsymbol \sigma}}
-\newcommand{\bfSigma}   {{\boldsymbol \Sigma}}
-\newcommand{\bfOmega}   {{\boldsymbol \Omega}}
-\newcommand{\bfomega}   {{\boldsymbol \Omega}}
-\newcommand{\bfGamma}   {{\boldsymbol \Gamma}}
-\newcommand{\bfgamma}   {{\boldsymbol \gamma}}
-\newcommand{\bfPhi}     {{\boldsymbol \Phi}}
-\newcommand{\bflambda}  {{\boldsymbol \lambda}}
-\newcommand{\bfmu}      {{\boldsymbol \mu}}
-\newcommand{\bfeta}     {{\boldsymbol \eta}}
-\newcommand{\bftau}      {{\boldsymbol \tau}}
-\newcommand{\bfupsilon}      {{\boldsymbol \upsilon}}
-\newcommand{\bnabla}	 { { \boldsymbol \nabla} }
-\newcommand{\btheta}	 { { \boldsymbol \theta} }
-\newcommand{\balpha}	 { { \boldsymbol \alpha} }
-\newcommand{\bfxi}		 { { \boldsymbol \xi} }
-\newcommand{\bfdelta}	 { { \boldsymbol \delta} }
 
 
-
-\newcommand{\LtL}       { \bfL^{\top}\bfL}
-
-\newcommand {\vu}  	 {{\vec {\bf  u}} }   
-\newcommand {\vuref} {\vu_{\text{ref}}}  
-\newcommand {\vq}  	 { {\vec {\bf  q}} }
-\newcommand {\ve}    { {\vec {\bf  e}} }
-\newcommand {\vh}    { {\vec {\bf  h}} }
-\newcommand {\vx}    {\vec {\bf x}}     
-\newcommand {\bx}    {{\bf{x}}}   
-\newcommand {\zero}  { {\bf 0} }
-
-\renewcommand{\hf}		 {\frac12}
-\newcommand{\hx}[1]		 {{\ensuremath{h^x_{\scriptscriptstyle #1}}}}
-\newcommand{\hy}[1]		 {{\ensuremath{h^y_{\scriptscriptstyle #1}}}}
-\newcommand{\hz}[1]		 {{\ensuremath{h^z_{\scriptscriptstyle #1}}}}
-
-
-\newcommand{\s}		{\vec{s}}
-\newcommand{\h}		{\vec{h}}
-\newcommand{\n}		{\vec{n}}
-\newcommand{\x}		{\vec{x}}
-\renewcommand{\u}		{\vec{u}}
-\renewcommand{\div}	{\nabla\cdot\,}
-\newcommand{\grad}	{\ensuremath {{\bf{ \nabla}}}}
-\newcommand{\curl}	{\ensuremath{{\nabla}\times\,}}
-\newdimen\iwidth\iwidth=30mm
-\newcommand{\rottext}[1]	{\rotatebox{90}{\hbox to 30mm{\hss #1\hss}}}
-\newcommand{\rme}			{\rm{e}}
-\newcommand{\HRule}			{\rule{\linewidth}{0.25mm}}
-
-\newcommand{\JJ} 	 {\mathcal{J}}    % objective functional
-\newcommand{\cD} 	 {\mathcal{D}}    % data misfit
-\newcommand{\CR} 	 {\mathcal{R}}    % regularization functional
-\newcommand{\CRflow} {\mathcal{R}^{\text{flow}}}    %  flow 
-\newcommand{\CRsat}  {\mathcal{R}^{\text{s}}}     %  saturation 
-\newcommand{\CF} 	 {\mathcal{F}}    % continuous tomography operator
-\newcommand{\sh} 	 {\texttt{s}}     % discretized initial slowness
-\newcommand{\DIVh}   {{\textsf{DIV}}}  % discretized divergence 
-\newcommand{\CURLh}  {{\textsf{CURL}}} % discrete curl operator
-\newcommand{\GRADh}  {{\textsf{GRAD}}} % discrete gradient operator
-
-\newcommand{\bfmhat}    {{\widehat{\bfm}}}
-\newcommand{\bfdhat}    {{\widehat{\bfd}}}
-\newcommand{\bfwhat}	{\widehat{\bf w}}
-
-\newcommand*\xbar[1]{%
-  \hbox{%
-    \vbox{%
-      \hrule height 0.5pt % The actual bar
-      \kern0.5ex%         % Distance between bar and symbol
-      \hbox{%
-        \kern-0.em%      % Shortening on the left side
-        \ensuremath{#1}%
-        \kern-0.01em%      % Shortening on the right side
-      }%
-    }%
-  }%
-} 
-\newcommand{\mbar}	{\xbar{\bf m}}
-\newcommand{\zbar}	{\xbar{\bf z}}
-\newcommand{\vbar}	{\xbar{\bf v}}
-\newcommand{\wbar}	{\xbar{\bf w}}
-\newcommand{\dbar}	{\xbar{\bf d}}
-\newcommand{\Qbar}	{\xbar{\bf Q}}
-\newcommand{\Wbar}	{\xbar{\bf W}}
-\newcommand{\Tbar}	{\xbar{\bf T}}
-
-\newcommand{\diag}	{\sf diag}
-\def\kronecker{\raisebox{1pt}{\ensuremath{\:\otimes\:}}} 
-
-
-
-
-
-
-
-
-
-
-
+\include{commands}
 \sloppy
 
 
@@ -369,7 +189,6 @@ that is
 \end{align}
 which leads to the estimate
 \begin{align}
-\label{mest2}
 \bfmhat_{2}(\bfw_{2}) = (\bfF_{1}^{\top} \bfW_{1}\bfF_{1} +
 \bfF_{2}^{\top} \bfW_{2}\bfF_{2} + \alpha \LtL)^{-1} (\bfF_{1}^{\top} \bfW_{1} \bfd_{1} +\bfF_{2}^{\top} \bfW_{2} \bfd_{2}
 + \alpha \LtL \bfmhat_{0})
@@ -645,7 +464,7 @@ This computation is easily carried out by defining $\bfz$ such that
 \end{equation}
   recalling that $\bfW_k = {\sf diag}(\bfw_k)$, and differentiating implicitly to obtain that
 \begin{equation*}
-\bfF_k^{\top}{\sf diag}(\bfF_k\bfz) + \bfF_k^{\top}{\sf diag}(\bfw_k)\bfF_k +\bfG)\grad_{\bfw_k}\bfz =\zero.
+\bfF_k^{\top}{\sf diag}(\bfF_k\bfz) + \bfF_k^{\top}{\sf diag}(\bfw_k)\bfF_k +\bfG)\Grad_{\bfw_k}\bfz =\zero.
 \end{equation*}
 Solving for the gradient of $\bfz$ we have,
 \begin{equation*}
@@ -753,9 +572,9 @@ The initial survey setup is pictured in figure \ref{fig:surveyDesign}, and inclu
   with hydraulic conductivity $\bfK$, and tracer concentration $c$ in a fluid of density $\rho$. The fluid velocity field $\vu$ satisfies a simple source-sink ($q$) flow model
 \begin{align}
 \label{eq:flowp}
-&  \div  \vu =   q \\ % \mu^{-1}\bfK(\bfx) \grad p
+&  \div  \vu =   q \\ % \mu^{-1}\bfK(\bfx) \Grad p
 \label{eq:flowu}
-& \vu =  \bfK(\vx)  \grad p \\
+& \vu =  \bfK(\vx)  \Grad p \\
 \label{eq:incond}
 &  p(0,\vx) = p_0(\vx),
 \end{align}
@@ -833,14 +652,14 @@ The  fluid velocity field $\bfu$ was  computed by solving equations \eqref{eq:fl
 \subsection{Regularization}
 
 Two different inversions were carried out to recover models $\bfm_k$, by apply two different regularization functions.  
-First a linear inversion was performed where the operator $\bfL$ was chosen to be a gradient operator,  $\bfL = \GRADh$, to promote smoothness in the recovered models.
+First a linear inversion was performed where the operator $\bfL$ was chosen to be $\bfI$,  $\bfL = \bfI$, to promote smallness in the recovered models. Alternately, we could have assigned $\bfL = \GRADh$ to promote smooth edges in the models. However, since the model has sharp edges, it does not make sense to design for smoothness. 
 
 Second, a non-linear inversion was performed with smoothed total variation (TV) as the  regularization~\cite{Ascher2006}.
  The total variation regularization promotes discontinuous boundaries, or sharp edges. This is particularly valid for our experiment since we have chosen advection without a diffusion term to transport a concentration of tracer. The tracer model is  concentrated in the circle and zero everywhere else. In this ideal case there should be no diffusion of the tracer, and thus the boundaries should remain sharp as it is advected along in the fluid velocity field.
 
 In continuous space, smoothed total variation is described by the following relation,
 \begin{equation}
-		R(m) = \alpha \int  \phi(|\grad m|) \ d\vx.
+		R(m) = \alpha \int  \phi(|\Grad m|) \ d\vx.
 \end{equation} 
 where the convex function $\phi(c) = \sqrt{c^2 + \epsilon}$, is an approximation to the $\ell_1$ norm. 
 
@@ -887,7 +706,7 @@ where the background model $\bfm_{\text{background}} $, is the model used to com
 For the noiseless case, data were simulated by marching  the initial tracer concentration along in time, for time steps of 25 days and measured by conducting a tomography survey at each time with 4\% Gaussian noise added to each data set. In total 9 experiments were conducted for times $t_0,t_1,...,t_8$. 
 
 
-The initial design for time point $t_0$ did not include the dynamics. This amounts to  setting $\bftau_0 = 1$ everywhere. The design optimization problem in this case is  identical to the static case and produces an optimal design based only on the physics and information from the linear regularization operator $\bfL$. This is apparent in both the plot of the weights for experiment 1 at time  $t_0$ in figure \ref{fig:weights1} and the image of the rays in figure \ref{fig:results1}, where the design specifies fewer rays that cover the entire domain. 
+The initial design for time point $t_0$ did not include the dynamics. This amounts to  setting $\bftau_0 = 1$ everywhere. The design optimization problem in this case is  identical to the static case and produces an optimal design based only on the physics and information from the linear regularization operator $\bfL = \bfI$. This is apparent in both the plot of the weights for experiment 1 at time  $t_0$ in figure \ref{fig:weights1} and the image of the rays in figure \ref{fig:results1}, where the design specifies fewer rays that cover the entire domain. 
 
 For each experiment the amse was plotted versus the number of nonzero weights for a set of regularization parameters $\beta$, see figure \ref{fig:weights1} for examples for times $t_0,t_2,t_4$. From these curves, the best set of weights were chosen such that the weights were sparse, but also so the amse was kept reasonably small. 
 %\begin{figure}[!h]
@@ -941,10 +760,10 @@ It is also apparent that the number of spurious rays increases further in time e
 The reconstructions of $\bfm_k$ with smoothed total variation as the regularization are much closer to the true models, even when the optimal design was computed for the linear regularization model estimation problem. Again, this is to be expected since we have chosen a model with discontinuous edges, and are transporting the target only by advection. 
 \begin{figure}
 	\begin{center}
-	\iwidth=170mm
+	\iwidth=160mm
 	\includegraphics[width = 1\iwidth]{figures/noiselessFigs/noiselessResults}
 	\end{center}
-	\caption{Noiseless dynamics: Optimal designs and recovered models for 9 	experiments. The top row shows the rays and the recovered model, with 		the number of rays (\#d = 350) given below, followed by the true 			models, the models recovered using total variation, and finally the 		models recovered using the linear gradient regularization.}
+	\caption{Noiseless dynamics: Optimal designs and recovered models for 9 	experiments. The top row shows the rays and the recovered model, with 		the number of rays (\#d = 288) given below, followed by the true 			models, the models recovered using total variation, and finally the 		models recovered using the linear gradient regularization.}
 	\label{fig:results1}
 \end{figure}
 
@@ -1052,12 +871,12 @@ The reconstructions of $\bfm_k$ with smoothed total variation as the regularizat
 \section{Results: Noisy  dynamics}
 \label{sec: Example2}
 For the first experiment $\bfw_0$, the initial naive experiment computed in the noiseless example was used in the subsequent design estimations. Each model was reconstructed at each time step after using the reduced data sets determined by the optimal design. Models were reconstructed using the non-linear smoothed total variation regularization, and also with the linear regularization. 
-The covariance matrices $\bfQ_k$ were assigned a scalar value for the variance for each time step to represent iid noise in the dynamics, such that $\bfQ_k = \sigma_k \bfI$. We assigned a constant $\sigma_k = \pm 0.2$ for all experiments. 
+The covariance matrices $\bfQ_k$ were assigned a scalar value for the variance for each time step to represent iid noise in the dynamics, such that $\bfQ_k = \sigma_k \bfI$. We assigned a constant $\sigma_k = \pm 0.2$, corresponding to $20\%$ noise, for all experiments.
 
 The results are pictured in figure \ref{fig:results2}, below. It is apparent that adapted A-optimal designs were again able to track the motion of the tracer with a significantly reduced set of measurements. The recoveries for $\bfm_k$ using the linear regularization term approximate the true models to a better extent that those of the noiseless formulation. However, those recovered with the smoothed TV regularization were again used in the monitor function. 
 \begin{figure}
 	\begin{center}
-	\iwidth=170mm
+	\iwidth=160mm
 	\includegraphics[width = 1\iwidth]{figures/newFigs/resultsAll2-new}
 	\end{center}
 	\caption{Noisey dynamics: Optimal designs and recovered models for 9 experiments. The top row shows the rays and the recovered model, with the number of rays (ex. \#d = 297) given below. The second row pictures true models, the third shows the  models recovered using total variation, and finally the bottom shows models recovered using the linear gradient regularization.}
