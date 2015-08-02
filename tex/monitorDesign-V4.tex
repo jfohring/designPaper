@@ -760,8 +760,8 @@ It is also apparent that the number of spurious rays increases further in time e
 The reconstructions of $\bfm_k$ with smoothed total variation as the regularization are much closer to the true models, even when the optimal design was computed for the linear regularization model estimation problem. Again, this is to be expected since we have chosen a model with discontinuous edges, and are transporting the target only by advection. 
 \begin{figure}
 	\begin{center}
-	\iwidth=160mm
-	\includegraphics[width = 1\iwidth]{figures/noiselessFigs/noiselessResults}
+	\iwidth=100mm
+	\includegraphics[width = 1\iwidth]{figures/noiseLessFigs/noiseLessResults}
 	\end{center}
 	\caption{Noiseless dynamics: Optimal designs and recovered models for 9 	experiments. The top row shows the rays and the recovered model, with 		the number of rays (\#d = 288) given below, followed by the true 			models, the models recovered using total variation, and finally the 		models recovered using the linear gradient regularization.}
 	\label{fig:results1}
@@ -876,8 +876,8 @@ The covariance matrices $\bfQ_k$ were assigned a scalar value for the variance f
 The results are pictured in figure \ref{fig:results2}, below. It is apparent that adapted A-optimal designs were again able to track the motion of the tracer with a significantly reduced set of measurements. The recoveries for $\bfm_k$ using the linear regularization term approximate the true models to a better extent that those of the noiseless formulation. However, those recovered with the smoothed TV regularization were again used in the monitor function. 
 \begin{figure}
 	\begin{center}
-	\iwidth=160mm
-	\includegraphics[width = 1\iwidth]{figures/newFigs/resultsAll2-new}
+	\iwidth=100mm
+	\includegraphics[width = 1\iwidth]{figures/noisyFigs/NoisyResults}
 	\end{center}
 	\caption{Noisey dynamics: Optimal designs and recovered models for 9 experiments. The top row shows the rays and the recovered model, with the number of rays (ex. \#d = 297) given below. The second row pictures true models, the third shows the  models recovered using total variation, and finally the bottom shows models recovered using the linear gradient regularization.}
 	\label{fig:results2}
