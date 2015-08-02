@@ -1,20 +1,22 @@
 %\documentclass[11pt]{article}%
-\documentclass[final,leqno,onefignum,onetabnum]{siamltexmm}
+\documentclass[final,leqno,onetabnum]{siamltexmm}
+%\usepackage{todonotes}
+
 \usepackage{graphicx}
 \usepackage{amsmath}
 %%%\usepackage{fullpage}
 \usepackage{amssymb}
 \usepackage{amsfonts}
-%\usepackage{latexsym}
+\usepackage{latexsym}
 %%\usepackage{pstricks}
 %%usepackage{tikz,pgflibraryplotmarks}
 %%\usepackage{algorithm}
 %%\usepackage{algpseudocode}
-%%\usepackage[colorlinks]{hyperref}
-%%\usepackage[nottoc,numbib]{tocbibind} 
-%\usepackage{natbib}
 
-\usepackage{todonotes}
+\usepackage{color}
+\usepackage[nottoc,numbib]{tocbibind} 
+%\usepackage{natbib}
+\usepackage[pdfmark]{hyperref}
 
 \include{commands}
 
@@ -69,7 +71,6 @@ While there exists a vast area of research in optimal experimental design for  i
 solving partial differential
 equations, one often uses a-priori estimates in order to solve the problem on one mesh 
 and then refines the mesh in order to obtain a more accurate solution \cite{MultiGrid}. The posterior estimate thus contributes to the decision as to where to refine the mesh. In our case we apply a similar logic to influence the design algorithm in such a way that we use solutions from earlier times to obtain a better optimal design at later times. 
-
 
 There are several considerations to be made when developing an optimal experimental design method. One such item is what exactly is meant by an ``optimal experiment''? In our context we refer to the problem of determining  the optimal placement of sensors to infer model parameters  through the inversion of  data. 
  Although there are several design criteria for such inverse problems,  we focus on A-optimal design in our work.
@@ -774,112 +775,14 @@ The reconstructions of $\bfm_k$ with smoothed total variation as the regularizat
 \begin{figure}
 	\begin{center}
 	\iwidth=160mm
-	\includegraphics[width = 1\iwidth]{figures/noiselessFigs/noiselessResults}
+	\includegraphics[width = 1\iwidth]{figures/noiselessFigs/noiseLessResults}
 	\end{center}
 	\caption{Noiseless dynamics: Optimal designs and recovered models for 9 	experiments. The top row shows the rays and the recovered model, with 		the number of rays (\#d = 288) given below, followed by the true 			models, the models recovered using total variation, and finally the 		models recovered using the linear gradient regularization.}
 	\label{fig:results1}
 \end{figure}
 
-%
-%\begin{figure}[!h]
-%	\renewcommand{\arraystretch}{1.5}
-%	\begin{center}
-%		\iwidth=13mm
-%		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
-%			\hline		
-%			 exp $t_0$ & exp $t_1$ & exp $t_2$& exp $t_3$& exp $t_4$& exp $t_5$& exp $t_6$ & exp $t_7$ & exp $t_8$\\
-%			\hline		
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-1-designs}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-2-designs}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-3-designs}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-4-designs}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-5-designs}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-6-designs}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-7-designs}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-8-designs}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-9-designs}			
-%			\\
-%			\hline
-%			$\#d=288$& $\#d=69$& $\#d=73$& $\#d= 61$& $\#d=77$& $\#d=55$& $\#d=76$& $\#d=61$& $\# d=35$\\
-%			\hline	
-%			 $\bfm^{\sf True}_{t_0}$& $\bfm^{\sf True}_{t_1}$&$\bfm^{\sf True}_{t_2}$& $\bfm^{\sf True}_{t_3}$&$\bfm^{\sf True}_{t_4}$& $\bfm^{\sf True}_{t_5}$ &$\bfm^{\sf True}_{t_6}$&$\bfm^{\sf True}_{t_7}$& $\bfm^{\sf True}_{t_8}$ 
-%			 \\
-%			\hline	
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-1-mtrue}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-2-mtrue}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-3-mtrue}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-4-mtrue}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-5-mtrue}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-6-mtrue}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-7-mtrue}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-8-mtrue}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-9-mtrue}
-%			\\
-%			\hline
-%			 $\bfm^{\sf TV}_{t_0}$& $\bfm^{\sf TV}_{t_1}$&$\bfm^{\sf TV}_{t_2}$& $\bfm^{\sf TV}_{t_3}$&$\bfm^{\sf TV}_{t_4}$& $\bfm^{\sf TV}_{t_5}$ &$\bfm^{\sf TV}_{t_6}$&$\bfm^{\sf TV}_{t_7}$& $\bfm^{\sf TV}_{t_8}$ \\
-%			\hline	
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-1-mkTV}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-2-mkTV}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-3-mkTV}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-4-mkTV}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-5-mkTV}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-6-mkTV}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-7-mkTV}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-8-mkTV}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-9-mkTV}
-%			\\
-%			\hline	
-%			 $\bfm^{\sf Lin}_{t_0}$& $\bfm^{\sf Lin}_{t_1}$&$\bfm^{\sf Lin}_{t_2}$& $\bfm^{\sf Lin}_{t_3}$&$\bfm^{\sf Lin}_{t_4}$& $\bfm^{\sf Lin}_{t_5}$ &$\bfm^{\sf Lin}_{t_6}$&$\bfm^{\sf Lin}_{t_7}$& $\bfm^{\sf Lin}_{t_8}$ \\
-%			\hline	
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-1-mk}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-2-mk}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-3-mk}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-4-mk}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-5-mk}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-6-mk}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-7-mk}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-8-mk}
-%			&
-%			\includegraphics[width=.9\iwidth]{figures/noiselessFigs/resultsExp-9-mk}		
-%			\\			
-%			\hline
-%		\end{tabular}
-%	\end{center}
-%	\caption{Noiseless dynamics: Optimal designs and recovered models for 9 experiments. The top row shows the rays and the recovered model, with the number of rays (\#d = 350) given below, followed by the true models, the models recovered using total variation, and finally the models recovered using the linear gradient regularization.}
-%	\label{fig:results1}
-%\end{figure}
 
+\newpage
 
 \section{Results: Noisy  dynamics}
 \label{sec: Example2}
@@ -890,7 +793,7 @@ The results are pictured in figure \ref{fig:results2}, below. It is apparent tha
 \begin{figure}
 	\begin{center}
 	\iwidth=160mm
-	\includegraphics[width = 1\iwidth]{figures/newFigs/resultsAll2-new}
+	\includegraphics[width = 1\iwidth]{figures/noisyFigs/noisyResults}
 	\end{center}
 	\caption{Noisey dynamics: Optimal designs and recovered models for 9 experiments. The top row shows the rays and the recovered model, with the number of rays (ex. \#d = 297) given below. The second row pictures true models, the third shows the  models recovered using total variation, and finally the bottom shows models recovered using the linear gradient regularization.}
 	\label{fig:results2}
@@ -1012,7 +915,7 @@ We have tested our methodology for a geophysical imaging inverse problem where t
 
 
 
-\newpage
+
 \begin{thebibliography}{10}
 
 \bibitem{Ajo-Franklin2009}
