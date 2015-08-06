@@ -643,8 +643,8 @@ The  fluid velocity field $\bfu$ was  computed by solving equations \eqref{eq:fl
 \begin{figure}
 	\renewcommand{\arraystretch}{1.5}
 	\begin{center}
-		\iwidth=90mm			
-			\includegraphics[width=1\iwidth]{figures/initialSetUp}			
+		\iwidth=100mm			
+			\includegraphics[width=1\iwidth]{figures/initialFig/InitialSetup}			
 	\end{center}
 \caption{Initial experiment setup. Tomography sources are pictured in green on the left and receivers in blue on the right. The initial setup covers the entire flow domain with 20 sources and 30 receivers. There is one source of fluid, pumped at a constant rate from the top green point, and a sink at the bottom (red) of the domain. Flow is in the downward direction. }
 \label{fig:surveyDesign}
@@ -674,14 +674,14 @@ where the  gradient operator, $\GRADh$,   maps from cell centers to cell faces, 
 Although we have formulated the optimal design based on a linear estimation of $\bfm_k$, it is not unreasonable to estimate $\bfm_k$  with a non-linear regularization, provided that this will contribute to recovering the best estimates of $\bfm_k$. As can be seen in figure \ref{fig:erro1} below, the overall relative model error for estimates recovered with the total variation regularization is significantly lower than that of the models estimated using the linear regularization. Thus the estimates obtained using the TV regularization are more accurate with respect to the true model for this particular problem. 
 Since the monitor function has a very large impact on the optimal design, it is desirable to get the best possible estimate of $\bfm_k$. 
 %
-\begin{figure}
-\begin{center}
-\iwidth=180mm
-\includegraphics[width=.75\iwidth]{figures/newFigs/exp2-error1}
-\end{center}
-\caption{Plot of the relative error ($\|\bfm_1^{true}-\bfmhat_1\|/(    \|\bfm^{true}_1\|)$) versus the regularization parameter $\alpha$ for both the linear regularization and smoothed total variation. }
-	\label{fig:erro1}
-\end{figure} 
+%\begin{figure}
+%\begin{center}
+%\iwidth=180mm
+%\includegraphics[width=.75\iwidth]{figures/newFigs/exp2-error1}
+%\end{center}
+%\caption{Plot of the relative error ($\|\bfm_1^{true}-\bfmhat_1\|/(    \|\bfm^{true}_1\|)$) versus the regularization parameter $\alpha$ for both the linear regularization and smoothed total variation. }
+%	\label{fig:erro1}
+%\end{figure} 
 
 In all cases, the regularization parameter had the value $\alpha_k = 100$. This value was chosen following a cooling strategy which starts with a large value for $\alpha$. Alpha is then decreased incrementally after each inversion, until the data misfit is approximately equal to noise.
 
@@ -746,7 +746,7 @@ For each experiment the amse was plotted versus the number of nonzero weights fo
 	\renewcommand{\arraystretch}{1.5}
 	\begin{center}
 		\iwidth=130mm
-					\includegraphics[width=1\iwidth]{figures/risk2}
+					\includegraphics[width=1\iwidth]{figures/riskFig/riskFigure}
 	\end{center}
 	\caption{Noiseless dynamics: Plots of the amse  vs. the number of nonzero weights (left column), and the weights used to conduct the experiment for experiments 1, 3, and 5, at times $t_0,\; t_2,\; t_4$.}
 	\label{fig:weights1}
@@ -760,10 +760,10 @@ It is also apparent that the number of spurious rays increases further in time e
 The reconstructions of $\bfm_k$ with smoothed total variation as the regularization are much closer to the true models, even when the optimal design was computed for the linear regularization model estimation problem. Again, this is to be expected since we have chosen a model with discontinuous edges, and are transporting the target only by advection. 
 \begin{figure}
 	\begin{center}
-	\iwidth=100mm
+	\iwidth=160mm
 	\includegraphics[width = 1\iwidth]{figures/noiseLessFigs/noiseLessResults}
 	\end{center}
-	\caption{Noiseless dynamics: Optimal designs and recovered models for 9 	experiments. The top row shows the rays and the recovered model, with 		the number of rays (\#d = 288) given below, followed by the true 			models, the models recovered using total variation, and finally the 		models recovered using the linear gradient regularization.}
+	\caption{Noiseless dynamics: Optimal designs and recovered models for 9 	experiments. The top row shows the rays and the recovered model, with 		the number of rays (\#d = 297) given below, followed by the true 			models, the models recovered using total variation, and finally the 		models recovered using the linear gradient regularization.}
 	\label{fig:results1}
 \end{figure}
 
@@ -876,10 +876,10 @@ The covariance matrices $\bfQ_k$ were assigned a scalar value for the variance f
 The results are pictured in figure \ref{fig:results2}, below. It is apparent that adapted A-optimal designs were again able to track the motion of the tracer with a significantly reduced set of measurements. The recoveries for $\bfm_k$ using the linear regularization term approximate the true models to a better extent that those of the noiseless formulation. However, those recovered with the smoothed TV regularization were again used in the monitor function. 
 \begin{figure}
 	\begin{center}
-	\iwidth=100mm
+	\iwidth=160mm
 	\includegraphics[width = 1\iwidth]{figures/noisyFigs/NoisyResults}
 	\end{center}
-	\caption{Noisey dynamics: Optimal designs and recovered models for 9 experiments. The top row shows the rays and the recovered model, with the number of rays (ex. \#d = 297) given below. The second row pictures true models, the third shows the  models recovered using total variation, and finally the bottom shows models recovered using the linear gradient regularization.}
+	\caption{Noisey dynamics: Optimal designs and recovered models for 9 experiments. The top row shows the rays and the recovered model, with the number of rays (ex. \#d = 455) given below. The second row pictures true models, the third shows the  models recovered using total variation, and finally the bottom shows models recovered using the linear gradient regularization.}
 	\label{fig:results2}
 \end{figure}
 %
