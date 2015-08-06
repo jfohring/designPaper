@@ -674,14 +674,14 @@ where the  gradient operator, $\GRADh$,   maps from cell centers to cell faces, 
 Although we have formulated the optimal design based on a linear estimation of $\bfm_k$, it is not unreasonable to estimate $\bfm_k$  with a non-linear regularization, provided that this will contribute to recovering the best estimates of $\bfm_k$. As can be seen in figure \ref{fig:erro1} below, the overall relative model error for estimates recovered with the total variation regularization is significantly lower than that of the models estimated using the linear regularization. Thus the estimates obtained using the TV regularization are more accurate with respect to the true model for this particular problem. 
 Since the monitor function has a very large impact on the optimal design, it is desirable to get the best possible estimate of $\bfm_k$. 
 %
-%\begin{figure}
-%\begin{center}
-%\iwidth=180mm
-%\includegraphics[width=.75\iwidth]{figures/newFigs/exp2-error1}
-%\end{center}
-%\caption{Plot of the relative error ($\|\bfm_1^{true}-\bfmhat_1\|/(    \|\bfm^{true}_1\|)$) versus the regularization parameter $\alpha$ for both the linear regularization and smoothed total variation. }
-%	\label{fig:erro1}
-%\end{figure} 
+\begin{figure}
+\begin{center}
+\iwidth=160mm
+\includegraphics[width=.75\iwidth]{figures/regFigs/regCompare}
+\end{center}
+\caption{Plot of the relative error ($\|\bfm_1^{true}-\bfmhat_1\|/(    \|\bfm^{true}_1\|)$) versus the regularization parameter $\alpha$ for both the linear regularization and smoothed total variation. }
+	\label{fig:erro1}
+\end{figure} 
 
 In all cases, the regularization parameter had the value $\alpha_k = 100$. This value was chosen following a cooling strategy which starts with a large value for $\alpha$. Alpha is then decreased incrementally after each inversion, until the data misfit is approximately equal to noise.
 
@@ -745,7 +745,7 @@ For each experiment the amse was plotted versus the number of nonzero weights fo
 \begin{figure}
 	\renewcommand{\arraystretch}{1.5}
 	\begin{center}
-		\iwidth=130mm
+		\iwidth=140mm
 					\includegraphics[width=1\iwidth]{figures/riskFig/riskFigure}
 	\end{center}
 	\caption{Noiseless dynamics: Plots of the amse  vs. the number of nonzero weights (left column), and the weights used to conduct the experiment for experiments 1, 3, and 5, at times $t_0,\; t_2,\; t_4$.}
