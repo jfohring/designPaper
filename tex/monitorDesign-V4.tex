@@ -234,10 +234,18 @@ the change in the model.
 For example, to start, consider the function
 \begin{align}
 \label{taufuns}
-\bftau = \bfdelta \odot \bfdelta,
+\bftau = \bfdelta,
 \end{align}
 that simply measures the change in the estimator
 compared to the previously known estimator. 
+A different function that we have found useful in our numerical experiments is
+\begin{align}
+\label{taufunschi}
+\bftau = \chi_{\theta}(\bfdelta),
+\end{align}
+where $\chi_{\theta}$ is a smoothed characteristic function. In this case we focus only on areas
+where $\bfdelta$ is large and do not sample areas where $\bfdelta$ is small.
+
 
 Given the monitor function,
 rather than minimizing the mean square error, we propose to minimize the
@@ -533,7 +541,7 @@ to avoid forming a the large matrix. We again used a steepest descent method for
 
 \section{Numerical Examples }
 \label{sec: Example1}
-We illustrate the adaptive  design method  with a toy problem designed to fully demonstrate the ability of our method to track  motion and areas of interest in the model. The toy  example consists of a  circular volume of tracer  moving vertically in a whole space. The dynamics governing the motion of the tracer are described by a simple tracer  advection model. 
+We illustrate the adaptive  design method  with a toy problem designed to fully demonstrate the ability of our method to track  motion and areas of interest in the model. The toy  example consists of a  circular volume of tracer  moving vertically. The dynamics governing the motion of the tracer are described by a simple tracer  advection model. 
 To image the tracer we chose a   borehole seismic tomography survey.
 
 The partial differential equations governing both the seismic tomography experiment and the dynamics are discretized on a  2D computational domain  $\Omega=[0, 400] \times [0, 100]$ meters,  divided into $[100, 50]$ cells of width $h = [4,2]$ meters.
@@ -652,14 +660,14 @@ The  fluid velocity field $\bfu$ was  computed by solving equations \eqref{eq:fl
 \subsection{Regularization}
 
 Two different inversions were carried out to recover models $\bfm_k$, by apply two different regularization functions.  
-First a linear inversion was performed where the operator $\bfL$ was chosen to be $\bfI$,  $\bfL = \bfI$, to promote smallness in the recovered models. Alternately, we could have assigned $\bfL = \GRADh$ to promote smooth edges in the models. However, since the model has sharp edges, it does not make sense to design for smoothness. 
+First a linear inversion was performed where the operator $\bfL$ was chosen to be $\bfI$,  $\bfL = \bfI$, to promote smallness in the recovered models. Alternately, we could have assigned $\bfL = \GRADh$ to promote smooth edges in the models. However, since the model has sharp edges, using a smooth recovery may lead to worse results. 
 
 Second, a non-linear inversion was performed with smoothed total variation (TV) as the  regularization~\cite{Ascher2006}.
  The total variation regularization promotes discontinuous boundaries, or sharp edges. This is particularly valid for our experiment since we have chosen advection without a diffusion term to transport a concentration of tracer. The tracer model is  concentrated in the circle and zero everywhere else. In this ideal case there should be no diffusion of the tracer, and thus the boundaries should remain sharp as it is advected along in the fluid velocity field.
 
 In continuous space, smoothed total variation is described by the following relation,
 \begin{equation}
-		R(m) = \alpha \int  \phi(|\Grad m|) \ d\vx.
+		R(m) =  \int  \phi(|\Grad m|) \ d\vx.
 \end{equation} 
 where the convex function $\phi(c) = \sqrt{c^2 + \epsilon}$, is an approximation to the $\ell_1$ norm. 
 
@@ -667,7 +675,7 @@ A standard discrete
 approximation for the smoothed total variation regularization found in ~\cite{Ascher2006} is, 
 \begin{equation}
 \label{regsd}
-R(\bfm) = \alpha h^2 \bfe^{\top} \sqrt{ \bfA_{f}^{c} \left( (\GRADh\ \bfm) \odot (\GRADh\ \bfm) \right)  + \epsilon},
+R(\bfm) =  h^2 \bfe^{\top} \sqrt{ \bfA_{f}^{c} \left( (\GRADh\ \bfm) \odot (\GRADh\ \bfm) \right)  + \epsilon},
 \end{equation}
 where the  gradient operator, $\GRADh$,   maps from cell centers to cell faces, and the averaging matrix $\bfA_{f}^{c}$ maps from faces to cell centers. 
 
@@ -679,17 +687,21 @@ Since the monitor function has a very large impact on the optimal design, it is 
 \iwidth=160mm
 \includegraphics[width=.75\iwidth]{figures/regFigs/regCompare}
 \end{center}
-\caption{Plot of the relative error ($\|\bfm_1^{true}-\bfmhat_1\|/(    \|\bfm^{true}_1\|)$) versus the regularization parameter $\alpha$ for both the linear regularization and smoothed total variation. }
+\caption{Plot of the relative error ($\|\bfm_1^{\rm true}-\bfmhat_1\|/(    \|\bfm^{\rm true}_1\|)$) versus the regularization parameter $\alpha$ for both the linear regularization and smoothed total variation. 
+The TV regularization gives a better estimate of the model for the case of sharp target.
+}
 	\label{fig:erro1}
 \end{figure} 
 
-In all cases, the regularization parameter had the value $\alpha_k = 100$. This value was chosen following a cooling strategy which starts with a large value for $\alpha$. Alpha is then decreased incrementally after each inversion, until the data misfit is approximately equal to noise.
+%In all cases, the regularization parameter had the value $\alpha_k = 100$. This value was chosen following a cooling strategy which starts with a large value for $\alpha$. Alpha is then decreased incrementally after each inversion, until the data misfit is approximately equal to noise.
 
 
 
 \subsection{Monitor function}
 
-To design only for the tracer motion, we define delta as $\bfdelta = |\bfm_{k} -\bfm_{\text{background}}|$. Because  neither the estimated model nor the background model are perfect, we  chose a threshold value $s$ to remove unwanted or erroneous information from delta 
+To design only for the tracer motion, we define delta as $\bfdelta = |\bfm_{k} -\bfm_{\text{b}}|$,
+where $\bfm_{\rm b}$ is the background model (that is, the model without the dynamic target).
+ Because  neither the estimated model nor the background model are perfect, we  chose a threshold value $\theta$ to remove unwanted or erroneous information from delta 
 %and defined the monitor function tau as a characteristic functions
 %as follows,
 %\begin{equation*}
@@ -699,7 +711,7 @@ To design only for the tracer motion, we define delta as $\bfdelta = |\bfm_{k} -
 %1, & \text{if } \bfdelta > s
 %\end{cases}
 %\end{equation*}
-where the background model $\bfm_{\text{background}} $, is the model used to compute the velocity field in equation \eqref{eq:flowu}.
+where the background model $\bfm_{\text{b}} $, is the model used to compute the velocity field in equation \eqref{eq:flowu}.
 
 \section{Design results: Noiseless dynamics}
 \label{sec:Results}
@@ -708,7 +720,7 @@ For the noiseless case, data were simulated by marching  the initial tracer conc
 
 The initial design for time point $t_0$ did not include the dynamics. This amounts to  setting $\bftau_0 = 1$ everywhere. The design optimization problem in this case is  identical to the static case and produces an optimal design based only on the physics and information from the linear regularization operator $\bfL = \bfI$. This is apparent in both the plot of the weights for experiment 1 at time  $t_0$ in figure \ref{fig:weights1} and the image of the rays in figure \ref{fig:results1}, where the design specifies fewer rays that cover the entire domain. 
 
-For each experiment the amse was plotted versus the number of nonzero weights for a set of regularization parameters $\beta$, see figure \ref{fig:weights1} for examples for times $t_0,t_2,t_4$. From these curves, the best set of weights were chosen such that the weights were sparse, but also so the amse was kept reasonably small. 
+For each experiment the amse was plotted versus the number of nonzero weights for a set of penalty parameters $\beta$, see figure \ref{fig:weights1} for examples for times $t_0,t_2,t_4$. From these curves, the best set of weights were chosen such that the weights were sparse, but also so the amse was kept reasonably small. 
 %\begin{figure}[!h]
 %	\renewcommand{\arraystretch}{1.5}
 %	\begin{center}
@@ -871,7 +883,7 @@ The reconstructions of $\bfm_k$ with smoothed total variation as the regularizat
 \section{Results: Noisy  dynamics}
 \label{sec: Example2}
 For the first experiment $\bfw_0$, the initial naive experiment computed in the noiseless example was used in the subsequent design estimations. Each model was reconstructed at each time step after using the reduced data sets determined by the optimal design. Models were reconstructed using the non-linear smoothed total variation regularization, and also with the linear regularization. 
-The covariance matrices $\bfQ_k$ were assigned a scalar value for the variance for each time step to represent iid noise in the dynamics, such that $\bfQ_k = \sigma_k \bfI$. We assigned a constant $\sigma_k = \pm 0.2$, corresponding to $20\%$ noise, for all experiments.
+The covariance matrices $\bfQ_k$ were assigned a scalar value for the variance for each time step to represent iid noise in the dynamics, such that $\bfQ_k = \sigma_k \bfI$. We assigned a constant $\sigma_k = 0.2$, corresponding to $20\%$ noise, for all experiments.
 
 The results are pictured in figure \ref{fig:results2}, below. It is apparent that adapted A-optimal designs were again able to track the motion of the tracer with a significantly reduced set of measurements. The recoveries for $\bfm_k$ using the linear regularization term approximate the true models to a better extent that those of the noiseless formulation. However, those recovered with the smoothed TV regularization were again used in the monitor function. 
 \begin{figure}
@@ -986,11 +998,11 @@ The results are pictured in figure \ref{fig:results2}, below. It is apparent tha
 \section{Concluding remarks}
 In this paper we have presented a new method for the design of experiments for dynamical systems which tracks the motion of specific areas of the model by incorporating historic data. 
 The motivation for not simply applying static optimal design methods to the dynamic problem is that the mean squared error of the current estimated model never contains information from previous data.
-To this end, the design optimization problem ``knows'' nothing about the changes in  the model due to the dynamics and thus designs only reflect information from the physics and the regularization of the ill-posed model estimation problem.  
+To this end, the design optimization problem ``knows'' nothing about the changes in  the model due to the dynamics and thus designs that are based on classical formulations only reflect information from the physics and the regularization (or prior) of the estimation problem.  
 
-Our adaptive optimal experimental design approach is based on the introduction of a monitor function to scale the  mean squared error (amse) of an estimator whose motion is governed by a dynamical system, according to historic data. 
-To determine a design for a future experiment, we minimize the amse  with the added constraint that the design is sparse. We consider two model estimation problems whose construction depends on the characterization of the error in the dynamical system. 
 This leads to experimental designs which track the changes in the model with a reduced set of measurements.  
+Our {\em adaptive optimal experimental design} approach is based on the introduction of a monitor function to scale the  mean squared error of an estimator whose motion is governed by a dynamical system, according to historic data. 
+To determine a design for a future experiment, we minimize the adaptive mse (amse)  with the added constraint that the design is sparse. We consider two model estimation problems whose construction depends on the characterization of the error in the dynamical system. 
 We have tested our methodology for a geophysical imaging inverse problem where the dynamics of the  model parameters are governed by advection in porous media. 
 
 \bigskip
