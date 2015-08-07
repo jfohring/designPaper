@@ -30,10 +30,10 @@ And secondly, we include the error in the dynamics and formulate the inverse pro
 We demonstrate our approach with A-optimal design criteria  for a borehole seismic tomography experiment, where the motion of the  model is governed by  advection in a constant velocity field, and show that we are able to recover optimal designs which track the motion of the model. 
 \end{abstract}
 
-\begin{keywords}experimental design, dynamical systems, Kalman filter, sparsity control 
+\begin{keywords}optimal experimental design, A-Optimal design, linear inverse problems, Kalman filter, sparsity control,tomography, subsurface flow 
 \end{keywords}
 
-\begin{AMS}\end{AMS}
+\begin{AMS}62K05, 35R30, 35Q86,86A05-08, 86A15-08, 35Q93 \end{AMS}
 
 \pagestyle{myheadings}
 \thispagestyle{plain}
@@ -639,11 +639,11 @@ Equations \eqref{eq:flowp} and \eqref{eq:flowu}  were discretized on a staggered
 
 The  fluid velocity field $\bfu$ was  computed by solving Equations \eqref{eq:flowp} and \eqref{eq:flowu} with a constant hydraulic conductivity for  $10$kg/s$^2$m$^2$, and pumping rate of $150$m$^3/$s. 
 %%
-%%
+%%************************************Figure 1: Exp Setup ************************* 
 \begin{figure}
 	\renewcommand{\arraystretch}{1.5}
 	\begin{center}
-		\iwidth=100mm			
+		\iwidth=90mm			
 			\includegraphics[width=1\iwidth]{figures/initialFig/InitialSetup.eps}		
 	\end{center}
 \caption{Initial experiment setup. Tomography sources are pictured in green on the left and receivers in blue on the right. The initial setup covers the entire flow domain with 20 sources and 30 receivers. There is one source of fluid, pumped at a constant rate from the top green point, and a sink at the bottom (red) of the domain. Flow is in the downward direction. }
@@ -681,7 +681,7 @@ where the  gradient operator, $\GRADh$,   maps from cell centers to cell faces, 
 Although we have formulated the optimal design based on a linear estimation of $\bfm_k$, it is not unreasonable to estimate $\bfm_k$  with a non-linear regularization, provided that this will contribute to recovering the best estimates of $\bfm_k$. As can be seen in figure \ref{fig:erro1} below, the overall relative model error for estimates recovered with the total variation regularization is significantly lower than that of the models estimated using the linear regularization. Thus the estimates obtained using the TV regularization are more accurate with respect to the true model for this particular problem. 
 Since the monitor function has a very large impact on the optimal design, it is desirable to get the best possible estimate of $\bfm_k$. 
 %%
-%%
+%%******************************** Figure 2: Regularizaiton *************************
 \begin{figure}
 \begin{center}
 \iwidth=180mm
@@ -716,11 +716,11 @@ The initial design for time point $t_0$ did not include the dynamics. This amoun
 
 For each experiment the amse was plotted versus the number of nonzero weights for a set of penalty parameters $\beta$, see figure \ref{fig:weights1} for examples for times $t_0,t_2,t_4$. From these curves, the best set of weights were chosen such that the weights were sparse, but also so the amse was kept reasonably small. 
 %%
-%%
+%%*************************** Figure 3: Risk ***************************************
 \begin{figure}
 	\renewcommand{\arraystretch}{1.5}
 	\begin{center}
-		\iwidth=130mm
+		\iwidth=135mm
 		\includegraphics[width=1\iwidth]{figures/riskFig/riskFigure.eps}
 	\end{center}
 	\caption{Noiseless dynamics: Plots of the amse  vs. the number of nonzero weights (left column), and the weights used to conduct the experiment for experiments 1, 3, and 5, at times $t_0,\; t_2,\; t_4$.}
@@ -736,13 +736,13 @@ It is also apparent that the number of spurious rays increases further in time e
 
 The reconstructions of $\bfm_k$ with smoothed total variation as the regularization are much closer to the true models, even when the optimal design was computed for the linear regularization model estimation problem. Again, this is to be expected since we have chosen a model with discontinuous edges, and are transporting the target only by advection. 
 %%
-%%
+%%************************* Figure 4: Noiselss Results *************************
 \begin{figure}
 	\begin{center}
 	\iwidth=160mm
 	\includegraphics[width = 1\iwidth]{figures/noiselessFigs/noiselessResults.eps}
 	\end{center}
-	\caption{Noiseless dynamics: Optimal designs and recovered models for 9 	experiments. The top row shows the rays and the recovered model, with 		the number of rays (\#d = 297) given below, followed by the true models, the models recovered using total variation, and finally the 	models recovered using the linear gradient regularization.}
+	\caption{{\bf Noiseless dynamics}: Optimal designs and recovered models for 9 	experiments. The top row shows the rays and the recovered model, with 		the number of rays (\#d = 297) given below, followed by the true models, the models recovered using total variation, and finally the 	models recovered using the linear gradient regularization.}
 	\label{fig:results1}
 \end{figure}
 %%
@@ -758,13 +758,13 @@ The covariance matrices $\bfQ_k$ were assigned a scalar value for the variance f
 
 The results are pictured in figure \ref{fig:results2}, below. It is apparent that adapted A-optimal designs were again able to track the motion of the tracer with a significantly reduced set of measurements. The recoveries for $\bfm_k$ using the linear regularization term approximate the true models to a better extent that those of the noiseless formulation. However, those recovered with the smoothed TV regularization were again used in the monitor function. 
 %%
-%%
+%%********************************* Figure 5: Noisy Results ***********************
 \begin{figure}
 	\begin{center}
 	\iwidth=160mm
 	\includegraphics[width = 1\iwidth]{figures/noisyFigs/NoisyResults.eps}
 	\end{center}
-	\caption{Noisey dynamics: Optimal designs and recovered models for 9 experiments. The top row shows the rays and the recovered model, with the number of rays (ex. \#d = 455) given below. The second row pictures true models, the third shows the  models recovered using total variation, and finally the bottom shows models recovered using the linear gradient regularization.}
+	\caption{{\bf Noisy dynamics}: Optimal designs and recovered models for 9 experiments. The top row shows the rays and the recovered model, with the number of rays (ex. \#d = 455) given below. The second row pictures true models, the third shows the  models recovered using total variation, and finally the bottom shows models recovered using the linear gradient regularization.}
 	\label{fig:results2}
 \end{figure}
 %%
@@ -790,7 +790,6 @@ We have tested our methodology for a geophysical imaging inverse problem where t
 %
 %_______________________________________Bibliography________________________________
 \begin{thebibliography}{10}
-
 \bibitem{Ajo-Franklin2009}
 Jonathan~B. Ajo-Franklin.
 \newblock {Optimal experiment design for time-lapse traveltime tomography}.
