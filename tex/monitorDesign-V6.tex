@@ -44,12 +44,12 @@
 
 
 \documentclass[final,leqno,onefignum,onetabnum]{siamltexmm}
-\usepackage{graphicx}
+\usepackage{graphics,graphicx}
 \usepackage{amsmath}
 \usepackage[pdfmark]{hyperref}
 \usepackage{amssymb}
 \usepackage{amsfonts}
-%\usepackage{color}
+\usepackage[dvips]{color}
 \usepackage[nottoc,numbib]{tocbibind} 
 \include{commands}
 \title{ Adaptive A-optimal experimental design for linear dynamical systems}
@@ -640,44 +640,18 @@ a detailed description of the discretization).
 
 Equations \eqref{eq:flowp} and \eqref{eq:flowu}  were discretized on a staggered grid using the finite volume method with the components of the velocity field located on the cell faces, and the tracer concentration at the cell centers. 
 
-%
-%\begin{figure}[!h]
-%\label{fig:cell}
-%\begin{center}
-%\begin{tikzpicture}[scale=1]
-% 	\draw[ultra thick]  (0,0) -- (6,0) -- (6,5) -- (0,5) -- cycle;
-%	\draw[black,ultra thick,double,->] (0,2.5) -- (0.5,2.5);
-%	\draw[black,ultra thick,double,->] (6,2.5) -- (6.5,2.5);
-%       \draw[black,ultra thick,double,->] (3,0) -- (3,0.5);
-%       \draw[black,ultra thick,double,->] (3,5) -- (3,5.5);
-%       
-%       %\draw[blue,ultra thick,double,->] (2,-2.5) -- (1,-2.7);
-%       %\draw[blue,ultra thick,double,->] (3.5,0) -- (3.5,1);
-%       %\draw[blue,ultra thick,double,->] (6,-2) -- (7,-2);
-%      \draw [gray,fill] (3,2.5) circle (2pt);
-%       \pgfputat{\pgfxy(3,2.5)}{\pgfbox[left,center]{\ \ $\bfm$}};
-%      \pgfputat{\pgfxy(0.5,2.6)}{\pgfbox[left,center]{$\bfu_{1}^{+}$}};
-%      \pgfputat{\pgfxy(6.5,2.6)}{\pgfbox[left,center]{$\bfu_{1}^{-}$}};
-%      
-%      \pgfputat{\pgfxy(3.0,0.6)}{\pgfbox[left,center]{$\bfu_{2}^{+}$}};
-%      \pgfputat{\pgfxy(3.0,5.6)}{\pgfbox[left,center]{$\bfu_{2}^{-}$}};
-%      
-%
-%       \end{tikzpicture}
-%\caption{An example of a stagered grid cell with model parameters at the cell center and fluid velocity field on the edges. \label{fig:stag}}
-%\end{center}
-%\end{figure}
-
 The  fluid velocity field $\bfu$ was  computed by solving equations \eqref{eq:flowp} and \eqref{eq:flowu} with a constant hydraulic conductivity for  $10$kg/s$^2$m$^2$, and pumping rate of $150$m$^3/$s. 
 \begin{figure}
 	\renewcommand{\arraystretch}{1.5}
 	\begin{center}
-		\iwidth=90mm			
-			\includegraphics[width=1\iwidth]{figures/initialFig/InitialSetup}			
+		\iwidth=100mm			
+			\includegraphics[width=1\iwidth]{figures/initialFig/InitialSetup.eps}		
 	\end{center}
 \caption{Initial experiment setup. Tomography sources are pictured in green on the left and receivers in blue on the right. The initial setup covers the entire flow domain with 20 sources and 30 receivers. There is one source of fluid, pumped at a constant rate from the top green point, and a sink at the bottom (red) of the domain. Flow is in the downward direction. }
 \label{fig:surveyDesign}
 \end{figure}
+
+
 \subsection{Regularization}
 
 Two different inversions were carried out to recover models $\bfm_k$, by apply two different regularization functions.  
@@ -706,7 +680,7 @@ Since the monitor function has a very large impact on the optimal design, it is 
 \begin{figure}
 \begin{center}
 \iwidth=180mm
-\includegraphics[width=.65\iwidth]{figures/regFigs/regCompare}
+\includegraphics[width=.65\iwidth]{figures/regFigs/regCompare.eps}
 \end{center}
 \caption{Plot of the relative error ($\|\bfm_1^{\rm true}-\bfmhat_1\|/(    \|\bfm^{\rm true}_1\|)$) versus the regularization parameter $\alpha$ for both the linear regularization and smoothed total variation. 
 The TV regularization gives a better estimate of the model for the case of sharp target.
@@ -747,7 +721,7 @@ For each experiment the amse was plotted versus the number of nonzero weights fo
 	\renewcommand{\arraystretch}{1.5}
 	\begin{center}
 		\iwidth=130mm
-					\includegraphics[width=1\iwidth]{figures/riskFig/riskFigure}
+					\includegraphics[width=1\iwidth]{figures/riskFig/riskFigure.eps}
 	\end{center}
 	\caption{Noiseless dynamics: Plots of the amse  vs. the number of nonzero weights (left column), and the weights used to conduct the experiment for experiments 1, 3, and 5, at times $t_0,\; t_2,\; t_4$.}
 	\label{fig:weights1}
@@ -763,7 +737,7 @@ The reconstructions of $\bfm_k$ with smoothed total variation as the regularizat
 \begin{figure}
 	\begin{center}
 	\iwidth=160mm
-	\includegraphics[width = 1\iwidth]{figures/noiselessFigs/noiselessResults}
+	\includegraphics[width = 1\iwidth]{figures/noiselessFigs/noiselessResults.eps}
 	\end{center}
 	\caption{Noiseless dynamics: Optimal designs and recovered models for 9 	experiments. The top row shows the rays and the recovered model, with 		the number of rays (\#d = 297) given below, followed by the true 			models, the models recovered using total variation, and finally the 		models recovered using the linear gradient regularization.}
 	\label{fig:results1}
@@ -780,7 +754,7 @@ The results are pictured in figure \ref{fig:results2}, below. It is apparent tha
 \begin{figure}
 	\begin{center}
 	\iwidth=160mm
-	\includegraphics[width = 1\iwidth]{figures/noisyFigs/NoisyResults}
+	\includegraphics[width = 1\iwidth]{figures/noisyFigs/NoisyResults.eps}
 	\end{center}
 	\caption{Noisey dynamics: Optimal designs and recovered models for 9 experiments. The top row shows the rays and the recovered model, with the number of rays (ex. \#d = 455) given below. The second row pictures true models, the third shows the  models recovered using total variation, and finally the bottom shows models recovered using the linear gradient regularization.}
 	\label{fig:results2}
@@ -796,7 +770,7 @@ Our {\em adaptive optimal experimental design} approach is based on the introduc
 To determine a design for a future experiment, we minimize the adaptive mse (amse)  with the added constraint that the design is sparse. We consider two model estimation problems whose construction depends on the characterization of the error in the dynamical system. 
 This leads to experimental designs that tracks the changes in the model with a reduced set of measurements.  
 We have tested our methodology for a geophysical imaging inverse problem where the dynamics of the  model parameters are governed by advection in porous media. 
-
+\newpage
 \begin{thebibliography}{10}
 
 \bibitem{Ajo-Franklin2009}
