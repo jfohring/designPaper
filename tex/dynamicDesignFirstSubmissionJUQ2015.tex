@@ -20,7 +20,7 @@
 
 \begin{abstract}
 While optimal experimental design for static linear inverse problems has been well studied, there is little in the way of experimental design methods for dynamical systems. 
-In particular, problems where historic data is included in the optimal design problem, such that the experiment tracks the motion of the model. 
+In particular, dynamic problems where historic data is included in the optimal experimental design method, such that the experiment tracks the motion of the model. 
 Thus, we propose an adaptive design method which minimizes the adapted mean square error (amse) of the regularized model estimate, defined by introducing a monitor function which scales the mean squared error according to historic model estimates. 
 
 We present the adaptive design method for two model estimation formulations based on the classification of the error in the dynamic process. 
@@ -33,7 +33,7 @@ We demonstrate our approach with A-optimal design criteria  for a borehole seism
 \begin{keywords}optimal experimental design, A-Optimal design, linear inverse problems, Kalman filter, sparsity control,tomography, subsurface flow 
 \end{keywords}
 
-\begin{AMS}62K05, 35R30, 35Q86,86A05-08, 86A15-08, 35Q93 \end{AMS}
+\begin{AMS}62K05, 35R30, 35Q86, 86A05-08, 86A15-08, 35Q93 \end{AMS}
 
 \pagestyle{myheadings}
 \thispagestyle{plain}
@@ -118,7 +118,7 @@ Consider  the estimation of $\bfm$ given $\bfd_{1}$,  accomplished by solving th
 \begin{align}
 \label{mest1}
 \widehat \bfm_{1} = {\rm arg}{\min} \ \hf \| \bfF_{1} \bfm - \bfd_{1}\|^{2}_{\bfW_{1}} + {\frac {\alpha} 2}
-\|\bfL (\bfm - \bfmhat_{0}) \|^{2}_2. 
+\|\bfL (\bfm - \bfmhat_{0}) \|^{2}_2
 \end{align}
 %
 where $\bfW_{1} = {\sf diag}(\bfw_{1})$ is a matrix of inverse standard deviations, 
@@ -198,7 +198,7 @@ that is
 \begin{align}
 \label{mest2}
 \bfmhat_{2} = {\rm arg}\min\ \hf \| \bfF_{1} \bfm - \bfd_{1}\|^{2}_{\bfW_{1}} + \hf \| \bfF_{2} \bfm - \bfd_{2}\|^{2}_{\bfW_{2}}  + {\frac {\alpha} 2}
-\|\bfL (\bfm -\bfmhat_{0}) \|^{2}_2. 
+\|\bfL (\bfm -\bfmhat_{0}) \|^{2}_2
 \end{align}
 %
 which leads to the estimate
@@ -206,7 +206,7 @@ which leads to the estimate
 \begin{align}
 \bfmhat_{2}(\bfw_{2}) = (\bfF_{1}^{\top} \bfW_{1}\bfF_{1} +
 \bfF_{2}^{\top} \bfW_{2}\bfF_{2} + \alpha \LtL)^{-1} (\bfF_{1}^{\top} \bfW_{1} \bfd_{1} +\bfF_{2}^{\top} \bfW_{2} \bfd_{2}
-+ \alpha \LtL \bfmhat_{0})
++ \alpha \LtL \bfmhat_{0}).
 \end{align}
 %
 Note that we assume that $\bfw_{1}$ is fixed and therefore the new estimate is a function of $\bfw_{2}$ alone.
@@ -216,7 +216,7 @@ the function
 \begin{align}
 \label{design2na}
 \phi_{2}^{\beta}(\bfw_{2} ) =  {\sf trace} \left[   (\bfF_{1}^{\top}\bfW_{1}\bfF_{1}   + \bfF_{2}^{\top}\bfW_{2}\bfF_{2} +
-\alpha \LtL)^{-1} \right] + \beta \sum \bfw_{2}\quad \quad 0 \le \bfw_i . 
+\alpha \LtL)^{-1} \right] + \beta \sum \bfw_{2}\quad \quad 0 \le \bfw_i. 
 \end{align}
 %
 At this point it is worth  pausing for a moment and noting an important feature of the experimental design criteria. 
@@ -299,7 +299,7 @@ at time $t_{k-1}$ and the model estimated at time $t_{k-2}$.
 %
 %
 %
-%_________________________SECTION: Dynamic Design ____________________________________
+%_________________________SECTION: Dynamic Design ________________________________
 \section{Design for dynamical systems}
 \label{sec:Dynamic}
 In the previous section we presented a formulation for adaptive A-optimal experimental 
@@ -424,7 +424,7 @@ allows us to write the estimation of  $\bfm, \forall \;\; k$ in compact form as
 \label{noisymk}
 \widehat{\mbar}_k = {\rm argmin } \;\;\hf \left\| \left((\bfI \kronecker \bfF)\mbar_k - \dbar_k\right)\right\|^2_{\Wbar_k} + \hf\left\|
 \;\Tbar\;\mbar_k
-\;\right\|^2_{\Qbar^{-1}_k} + {\frac \alpha 2} \left\| (\bfI \kronecker \bfL)\mbar_k \right\|^{2}.
+\;\right\|^2_{\Qbar^{-1}_k} + {\frac \alpha 2} \left\| (\bfI \kronecker \bfL)\mbar_k \right\|^{2}_2.
 \end{align} 
 %
 
@@ -544,22 +544,19 @@ where
 Substituting the gradient of $\zbar $ back into the gradient of the noisy design objective function and transposing gives,
 %
 \begin{align}
-\nabla \bfPhi_k^{\beta}(\bfw_k) = -\bfB^{\top}\left((\bfI \kronecker \bfF)^{\top}\Wbar_k(\bfI \kronecker \bfF)  +
-\Tbar^{\top}\Qbar^{-1}_k\Tbar + \alpha \bfI \kronecker(\LtL)
-\right)^{- \top}(\bar{\bftau} \odot \bar{\bfv}) + \beta\bfe.
+\nabla \bfPhi_k^{\beta}(\bfw_k) = -\bfB^{\top}\ybar + \beta\bfe,
 \end{align}
 %
-
-To solve the system for $\zbar$ and for
+where
 %
 \begin{align}
 \ybar = \left((\bfI \kronecker \bfF)^{\top}\Wbar_k(\bfI \kronecker \bfF)  +
 \Tbar^{\top}\Qbar^{-1}_k\Tbar + \alpha \bfI \kronecker(\LtL)
-\right)^{- \top}(\bar{\bftau} \odot \bar{\bfv}) 
+\right)^{- \top}(\bar{\bftau} \odot \bar{\bfv}).
 \end{align}
 %
-the preconditioned conjugate gradient method was used 
-to avoid forming a the large matrix. We again used a steepest descent method for the non-linear design optimization. 
+To solve for $\zbar$ and $\ybar$, the preconditioned conjugate gradient method was used 
+to avoid forming  the large matrices. We again used a steepest descent method for the non-linear design optimization. 
 %
 %
 %
@@ -575,14 +572,15 @@ The partial differential equations governing both the seismic tomography experim
 \subsection{Imaging: seismic borehole tomography}
  Borehole seismic tomography  measures the travel time of an acoustic wave traveling between sources $n_s$ and receivers $n_r$. Travel times are given by integrating the slowness  $m(t,\vx)$  or inverse acoustic velocity of the media  along a linear ray path $\Gamma$,
  %
-\begin{align}\label{eq:tomo}
+\begin{align}
+\label{eq:tomo}
 \bfd_{j,k}(t) =  \int\limits_{\Gamma_{j,k}} m(t,\vx)\, d\ell.
 \end{align}
 %
 Assuming the data are noisy and measured at times $(t_0,...t_n)$ the tomography problem is given by 
  %
 \begin{align}
-\CF m(t_{k},\vx) + \epsilon_{k}  = \bfd(t_{k}).\\
+\CF m(t_{k},\vx) + \epsilon_{k}  = \bfd(t_{k}).
 \end{align}
 %
 Equation \eqref{eq:tomo} is discretized on a standard cell-centered 2D grid using a finite volume scheme, with  $m$ located at the cell centers.
@@ -594,7 +592,7 @@ The discrete tomography experiment is then,
 \end{align}
 %
 Here $\bfF$ is a discretization of the ray paths. Note that we assume many ray paths and the goal of the experimental design is to choose a subset of rays that ``best'' recover the model, $\bfm$.
-The initial survey setup is pictured in figure \ref{fig:surveyDesign}, and includes 2 boreholes with 20 sources in the east borehole and  30 receivers in the west borehole. The initial design was chosen to overly cover all the area in the flow domain, with the goal of significantly reducing the number of data required to image the moving model. 
+The initial survey setup is pictured in Figure \ref{fig:surveyDesign}, and includes 2 boreholes with 20 sources in the east borehole and  30 receivers in the west borehole. The initial design was chosen to overly cover all the area in the flow domain, with the goal of significantly reducing the number of data required to image the moving model. 
 %
 %_______ SUB: Tracer advection ______
 \subsection{Dynamics: tracer advection} 
@@ -663,13 +661,13 @@ Second, a non-linear inversion was performed with smoothed total variation (TV) 
 In continuous space, smoothed total variation is described by the following relation,
 %
 \begin{align}
-		R(m) =  \int  \phi(|\Grad m|) \ d\vx.
+		R(m) =  \int  \phi(|\Grad m|) \ d\vx
 \end{align} 
 %
 where the convex function $\phi(c) = \sqrt{c^2 + \epsilon}$, is an approximation to the $\ell_1$ norm. 
 
 A standard discrete 
-approximation for the smoothed total variation regularization found in ~\cite{Ascher2006} is, 
+approximation for the smoothed total variation regularization found in~\cite{Ascher2006} is, 
 %
 \begin{align}
 \label{regsd}
@@ -678,7 +676,7 @@ R(\bfm) =  h^2 \bfe^{\top} \sqrt{ \bfA_{f}^{c} \left( (\GRADh\ \bfm) \odot (\GRA
 %
 where the  gradient operator, $\GRADh$,   maps from cell centers to cell faces, and the averaging matrix $\bfA_{f}^{c}$ maps from faces to cell centers. 
 
-Although we have formulated the optimal design based on a linear estimation of $\bfm_k$, it is not unreasonable to estimate $\bfm_k$  with a non-linear regularization, provided that this will contribute to recovering the best estimates of $\bfm_k$. As can be seen in figure \ref{fig:erro1} below, the overall relative model error for estimates recovered with the total variation regularization is significantly lower than that of the models estimated using the linear regularization. Thus the estimates obtained using the TV regularization are more accurate with respect to the true model for this particular problem. 
+Although we have formulated the optimal design based on a linear estimation of $\bfm_k$, it is not unreasonable to estimate $\bfm_k$  with a non-linear regularization, provided that this will contribute to recovering the best estimates of $\bfm_k$. As can be seen in Figure \ref{fig:erro1} below, the overall relative model error for estimates recovered with the total variation regularization is significantly lower than that of the models estimated using the linear regularization. Thus the estimates obtained using the TV regularization are more accurate with respect to the true model for this particular problem. 
 Since the monitor function has a very large impact on the optimal design, it is desirable to get the best possible estimate of $\bfm_k$. 
 %%
 %%******************************** Figure 2: Regularizaiton *************************
@@ -712,9 +710,9 @@ where the background model $\bfm_{\text{b}} $, is the model used to compute the 
 For the noiseless case, data were simulated by marching  the initial tracer concentration along in time, for time steps of 25 days and measured by conducting a tomography survey at each time with 4\% Gaussian noise added to each data set. In total 9 experiments were conducted for times $t_0,t_1,...,t_8$. 
 
 
-The initial design for time point $t_0$ did not include the dynamics. This amounts to  setting $\bftau_0 = 1$ everywhere. The design optimization problem in this case is  identical to the static case and produces an optimal design based only on the physics and information from the linear regularization operator $\bfL = \bfI$. This is apparent in both the plot of the weights for experiment 1 at time  $t_0$ in figure \ref{fig:weights1} and the image of the rays in figure \ref{fig:results1}, where the design specifies fewer rays that cover the entire domain. 
+The initial design for time point $t_0$ did not include the dynamics. This amounts to  setting $\bftau_0 = 1$ everywhere. The design optimization problem in this case is  identical to the static case and produces an optimal design based only on the physics and information from the linear regularization operator $\bfL = \bfI$. This is apparent in both the plot of the weights for experiment 1 at time  $t_0$ in Figure \ref{fig:weights1} and the image of the rays in Figure \ref{fig:results1}, where the design specifies fewer rays that cover the entire domain. 
 
-For each experiment the amse was plotted versus the number of nonzero weights for a set of penalty parameters $\beta$, see figure \ref{fig:weights1} for examples for times $t_0,t_2,t_4$. From these curves, the best set of weights were chosen such that the weights were sparse, but also so the amse was kept reasonably small. 
+For each experiment the amse was plotted versus the number of nonzero weights for a set of penalty parameters $\beta$, see Figure \ref{fig:weights1} for examples for times $t_0,t_2,t_4$. From these curves, the best set of weights were chosen such that the weights were sparse, but also so the amse was kept reasonably small. 
 %%
 %%*************************** Figure 3: Risk ***************************************
 \begin{figure}
@@ -728,8 +726,8 @@ For each experiment the amse was plotted versus the number of nonzero weights fo
 \end{figure}
 %%
 %%
-After a set of weights were chosen, both $\bfm_0$ and the current model $\bfm_k$ were reconstructed from the reduced set of data $\bfd_k$. The values of $\bfd$ which contribute to the reduced data set correspond to the non-zero weights of $\bfw_k$. The total number of data required to image the models is significantly reduced. In most cases the number of data are on average  40 of a possible 600.
-  In figure \ref{fig:results1} the rays corresponding to $\bfd_k$ used to estimate the current models are pictured in blue over an image of the model. Note that the rays tend to follow the target as it moves through the domain and pass through the tracer.
+After a set of weights were chosen, both $\bfm_0$ and the current model $\bfm_k$ were reconstructed from the reduced set of data $\bfd_k$. The values of $\bfd$ which contribute to the reduced data set correspond to the non-zero weights of $\bfw_k$. The total number of data required to image the models is significantly reduced. In most cases the number of data are on average  60 of a possible 600.
+  In Figure \ref{fig:results1} the rays corresponding to $\bfd_k$ used to estimate the current models are pictured in blue over an image of the model. Note that the rays tend to follow the target as it moves through the domain and pass through the tracer.
 There are some spurious rays that do not pass through the tracer which are included in the optimal design. However, since the design depends on the monitor function  $\bftau(\bfmhat_0)$, and the reconstructions of $\bfmhat_0$ are never exact,  these spurious rays are expected. 
 
 It is also apparent that the number of spurious rays increases further in time even though estimates of $\bfm_0$ improve as more data are collected. In particular, at time $t_6$ it appears that the design algorithm has a harder time generating a design that captures the target well. There are many more rays which do not pass through the target. This is partially due to the increasing number of multiplications by the transport matrix $\bfT$ as time progresses, compounding errors, but also the loss of mass as the tracer exits the domain out of the sink. However, the designs still provide enough information to recover models which indicate the location of the tracer.  
@@ -756,7 +754,7 @@ The reconstructions of $\bfm_k$ with smoothed total variation as the regularizat
 For the first experiment $\bfw_0$, the initial naive experiment computed in the noiseless example was used in the subsequent design estimations. Each model was reconstructed at each time step after using the reduced data sets determined by the optimal design. Models were reconstructed using the non-linear smoothed total variation regularization, and also with the linear regularization. 
 The covariance matrices $\bfQ_k$ were assigned a scalar value for the variance for each time step to represent iid noise in the dynamics, such that $\bfQ_k = \sigma_k \bfI$. We assigned a constant $\sigma_k = 0.2$, corresponding to $20\%$ noise, for all experiments.
 
-The results are pictured in figure \ref{fig:results2}, below. It is apparent that adapted A-optimal designs were again able to track the motion of the tracer with a significantly reduced set of measurements. The recoveries for $\bfm_k$ using the linear regularization term approximate the true models to a better extent that those of the noiseless formulation. However, those recovered with the smoothed TV regularization were again used in the monitor function. 
+The results are pictured in Figure \ref{fig:results2}, below. It is apparent that adapted A-optimal designs were again able to track the motion of the tracer with a significantly reduced set of measurements. The recoveries for $\bfm_k$ using the linear regularization term approximate the true models to a better extent that those of the noiseless formulation. However, those recovered with the smoothed TV regularization were again used in the monitor function. 
 %%
 %%********************************* Figure 5: Noisy Results ***********************
 \begin{figure}
@@ -780,7 +778,7 @@ To this end, the design optimization problem ``knows'' nothing about the changes
 
 Our {\em adaptive optimal experimental design} approach is based on the introduction of a monitor function to scale the  mean squared error of an estimator whose motion is governed by a dynamical system, according to historic data. 
 To determine a design for a future experiment, we minimize the adaptive mse (amse)  with the added constraint that the design is sparse. We consider two model estimation problems whose construction depends on the characterization of the error in the dynamical system. 
-This leads to experimental designs that tracks the changes in the model with a reduced set of measurements.  
+This leads to experimental designs that track the changes in the model with a reduced set of measurements.  
 We have tested our methodology for a geophysical imaging inverse problem where the dynamics of the  model parameters are governed by advection in porous media. 
 %
 %
